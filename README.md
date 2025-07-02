@@ -17,10 +17,12 @@ This premium sake collection website helps overcome language barriers for overse
 - **Mobile-First Responsive**: Optimized for all devices with elegant scaling
 - **Traditional Japanese Elements**: Authentic typography and cultural aesthetics
 
-### 🌐 Multilingual Support
-- **4 Languages**: Japanese, English, French, Chinese
-- **Dynamic Switching**: Real-time language switching without page reload
-- **Cultural Localization**: Adapted content for each market
+### 🌐 Advanced Translation System
+- **8 Languages**: Japanese, English, French, Chinese, Korean, Italian, Spanish, Vietnamese
+- **DeepL API Integration**: Professional-grade translation quality
+- **Smart Caching**: Local storage for fast repeated translations
+- **Real-time Translation**: Dynamic content translation without page reload
+- **Cultural Localization**: Context-aware translations for sake terminology
 
 ### 🛍️ E-commerce Features
 - **Product Catalog**: 10 premium sake brands with detailed information

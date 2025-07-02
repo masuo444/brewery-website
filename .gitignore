@@ -6,6 +6,9 @@ config/api-config.js
 .env.development
 server/.env
 
+# DeepL API Configuration
+config/deepl-config.js
+
 # Editor directories and files
 .vscode/
 .idea/

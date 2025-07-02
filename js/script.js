@@ -339,31 +339,28 @@ function setupAnimations() {
     };
 }
 
-function updateLanguage() {
-    const trans = translations[currentLanguage];
-    
-    if (!trans) {
-        console.error('No translations found for language:', currentLanguage);
-        return;
+async function updateLanguage() {
+    // Use DeepL translation for real-time translation
+    if (window.deepLTranslation && currentLanguage !== 'ja') {
+        await window.deepLTranslation.translatePage(currentLanguage);
     }
     
-    // Update text content for elements with data-translate attribute
-    const elementsWithTranslation = document.querySelectorAll('[data-translate]');
-    
-    elementsWithTranslation.forEach(element => {
-        const key = element.dataset.translate;
-        if (trans[key]) {
-            element.textContent = trans[key];
-        }
-    });
-
-    // Update placeholders
-    if (globalSearch) {
-        globalSearch.placeholder = trans.searchPlaceholder || 'Search...';
+    // Update placeholders using DeepL
+    if (globalSearch && window.deepLTranslation && currentLanguage !== 'ja') {
+        const placeholder = await window.deepLTranslation.translateText('お酒を検索...', currentLanguage);
+        globalSearch.placeholder = placeholder;
+    } else if (globalSearch) {
+        globalSearch.placeholder = 'お酒を検索...';
     }
 
-    // Update document title
-    document.title = (trans.title || 'Masumasu Brewery') + ' - Premium Japanese Sake Collection';
+    // Update document title using DeepL
+    if (window.deepLTranslation && currentLanguage !== 'ja') {
+        const title = await window.deepLTranslation.translateText('益々酒造', currentLanguage);
+        const subtitle = await window.deepLTranslation.translateText('プレミアム日本酒コレクション', currentLanguage);
+        document.title = `${title} - ${subtitle}`;
+    } else {
+        document.title = '益々酒造 - プレミアム日本酒コレクション';
+    }
     
     // Update HTML lang attribute
     document.documentElement.lang = currentLanguage;
@@ -438,58 +435,115 @@ function filterAndRenderProducts() {
     renderProducts();
 }
 
-function renderProducts() {
+async function renderProducts() {
     if (!productsGrid) return;
-
-    const trans = translations[currentLanguage];
     
     if (filteredProducts.length === 0) {
+        let noProductsTitle = 'No products found';
+        let noProductsDesc = 'Try adjusting your filters or search terms.';
+        
+        if (window.deepLTranslation && currentLanguage !== 'ja') {
+            noProductsTitle = await window.deepLTranslation.translateText('商品が見つかりません', currentLanguage);
+            noProductsDesc = await window.deepLTranslation.translateText('フィルターや検索条件を調整してください。', currentLanguage);
+        } else if (currentLanguage === 'ja') {
+            noProductsTitle = '商品が見つかりません';
+            noProductsDesc = 'フィルターや検索条件を調整してください。';
+        }
+        
         productsGrid.innerHTML = `
             <div class="no-products">
-                <h3>No products found</h3>
-                <p>Try adjusting your filters or search terms.</p>
+                <h3>${noProductsTitle}</h3>
+                <p>${noProductsDesc}</p>
             </div>
         `;
         return;
     }
 
-    productsGrid.innerHTML = filteredProducts.map(product => {
+    // Render products with DeepL translations
+    const productCards = await Promise.all(filteredProducts.map(async (product) => {
         const stockClass = product.inStock > 20 ? '' : product.inStock > 0 ? 'low' : 'out';
-        const stockText = product.inStock > 0 ? `${product.inStock} ${trans.bottles || 'bottles'}` : trans.outOfStock || 'Out of Stock';
+        
+        // Translate labels and text
+        let bottlesText = 'bottles';
+        let outOfStockText = 'Out of Stock';
+        let detailsText = 'もっと詳しく';
+        let addToCartText = 'Add to Cart';
+        let alcoholLabel = 'Alcohol';
+        let ricePolishLabel = 'Rice Polish';
+        let riceTypeLabel = 'Rice Type';
+        let regionLabel = 'Region';
+        
+        if (window.deepLTranslation && currentLanguage !== 'ja') {
+            [bottlesText, outOfStockText, detailsText, addToCartText, 
+             alcoholLabel, ricePolishLabel, riceTypeLabel, regionLabel] = await Promise.all([
+                window.deepLTranslation.translateText('本', currentLanguage),
+                window.deepLTranslation.translateText('在庫切れ', currentLanguage),
+                window.deepLTranslation.translateText('もっと詳しく', currentLanguage),
+                window.deepLTranslation.translateText('カートに追加', currentLanguage),
+                window.deepLTranslation.translateText('アルコール度数', currentLanguage),
+                window.deepLTranslation.translateText('精米歩合', currentLanguage),
+                window.deepLTranslation.translateText('使用米', currentLanguage),
+                window.deepLTranslation.translateText('産地', currentLanguage)
+            ]);
+        } else if (currentLanguage === 'ja') {
+            bottlesText = '本';
+            outOfStockText = '在庫切れ';
+            detailsText = 'もっと詳しく';
+            addToCartText = 'カートに追加';
+            alcoholLabel = 'アルコール度数';
+            ricePolishLabel = '精米歩合';
+            riceTypeLabel = '使用米';
+            regionLabel = '産地';
+        }
+        
+        const stockText = product.inStock > 0 ? `${product.inStock} ${bottlesText}` : outOfStockText;
+        
+        // Translate product data
+        let translatedProduct = product;
+        if (window.deepLTranslation && currentLanguage !== 'ja') {
+            translatedProduct = await window.deepLTranslation.translateProduct(product, currentLanguage);
+        }
+        
+        const productName = translatedProduct.name || product.name.ja;
+        const productBrewery = translatedProduct.brewery || product.brewery.ja;
+        const productType = translatedProduct.type || product.type.ja;
+        const productDescription = translatedProduct.description || product.description.ja;
+        const productRiceType = translatedProduct.riceType || product.riceType.ja;
+        const productRegion = translatedProduct.region || product.region.ja;
         
         return `
             <div class="product-card ${product.limited ? 'limited' : ''}" data-id="${product.id}">
                 <div class="product-image" onclick="window.location.href='product.html?id=${product.id}'">
-                    <img src="${product.image}" alt="${product.name[currentLanguage] || product.name.en}" loading="lazy">
+                    <img src="${product.image}" alt="${productName}" loading="lazy">
                 </div>
                 <div class="product-info">
                     <div class="product-header">
                         <div class="product-left">
-                            <h3 class="product-name ${currentLanguage === 'ja' ? 'japanese' : ''}">${product.name[currentLanguage] || product.name.en}</h3>
-                            <p class="product-brewery">${product.brewery[currentLanguage] || product.brewery.en}</p>
-                            <span class="product-type">${product.type[currentLanguage] || product.type.en}</span>
+                            <h3 class="product-name ${currentLanguage === 'ja' ? 'japanese' : ''}">${productName}</h3>
+                            <p class="product-brewery">${productBrewery}</p>
+                            <span class="product-type">${productType}</span>
                         </div>
                         <div class="product-price">¥${product.sizes[0].price.toLocaleString()}</div>
                     </div>
                     
-                    <p class="product-description">${product.description[currentLanguage] || product.description.en}</p>
+                    <p class="product-description">${productDescription}</p>
                     
                     <div class="product-details">
                         <div class="product-detail">
-                            <div class="product-detail-label">${trans.alcohol || 'Alcohol'}</div>
+                            <div class="product-detail-label">${alcoholLabel}</div>
                             <div class="product-detail-value">${product.alcohol}%</div>
                         </div>
                         <div class="product-detail">
-                            <div class="product-detail-label">${trans.ricePalish || 'Rice Polish'}</div>
+                            <div class="product-detail-label">${ricePolishLabel}</div>
                             <div class="product-detail-value">${product.ricePalish ? product.ricePalish + '%' : '-'}</div>
                         </div>
                         <div class="product-detail">
-                            <div class="product-detail-label">${trans.riceType || 'Rice Type'}</div>
-                            <div class="product-detail-value">${product.riceType[currentLanguage] || product.riceType.en}</div>
+                            <div class="product-detail-label">${riceTypeLabel}</div>
+                            <div class="product-detail-value">${productRiceType}</div>
                         </div>
                         <div class="product-detail">
-                            <div class="product-detail-label">${trans.region || 'Region'}</div>
-                            <div class="product-detail-value">${product.region[currentLanguage] || product.region.en}</div>
+                            <div class="product-detail-label">${regionLabel}</div>
+                            <div class="product-detail-value">${productRegion}</div>
                         </div>
                     </div>
 
@@ -500,16 +554,18 @@ function renderProducts() {
 
                     <div class="product-actions">
                         <button class="btn-secondary" onclick="window.location.href='product.html?id=${product.id}'">
-                            もっと詳しく
+                            ${detailsText}
                         </button>
                         <button class="btn-primary" onclick="addToCart(${product.id})" ${product.inStock === 0 ? 'disabled' : ''}>
-                            ${trans.addToCart || 'Add to Cart'}
+                            ${addToCartText}
                         </button>
                     </div>
                 </div>
             </div>
         `;
-    }).join('');
+    }));
+    
+    productsGrid.innerHTML = productCards.join('');
 }
 
 function openProductModal(product) {
