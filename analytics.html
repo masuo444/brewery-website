@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>益々酒造 - アクセス解析ダッシュボード</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .analytics-dashboard {
+            min-height: 100vh;
+            background: var(--gradient-background);
+            padding: 40px 0;
+        }
+        
+        .dashboard-header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 30px 0;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .dashboard-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        
+        .dashboard-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: var(--border-radius-xl);
+            padding: 30px;
+            box-shadow: var(--shadow-luxury);
+            border: 3px solid rgba(232, 184, 109, 0.2);
+            backdrop-filter: blur(20px);
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-accent);
+        }
+        
+        .stat-card {
+            position: relative;
+        }
+        
+        .stat-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-right: 16px;
+            filter: drop-shadow(0 4px 8px rgba(232, 184, 109, 0.3));
+        }
+        
+        .stat-title {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+        
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--color-accent);
+            margin-bottom: 8px;
+            text-shadow: 0 2px 4px rgba(232, 184, 109, 0.3);
+        }
+        
+        .stat-label {
+            color: var(--color-cognac);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        
+        .stat-details {
+            background: var(--gradient-luxury);
+            padding: 16px;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--color-accent);
+        }
+        
+        .language-chart,
+        .product-chart,
+        .time-chart {
+            margin-top: 20px;
+        }
+        
+        .chart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(232, 184, 109, 0.2);
+        }
+        
+        .chart-item:last-child {
+            border-bottom: none;
+        }
+        
+        .chart-label {
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+        
+        .chart-bar {
+            flex: 1;
+            height: 8px;
+            background: rgba(232, 184, 109, 0.2);
+            margin: 0 16px;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .chart-fill {
+            height: 100%;
+            background: var(--gradient-accent);
+            border-radius: 4px;
+            transition: width 2s ease;
+        }
+        
+        .chart-value {
+            font-weight: 700;
+            color: var(--color-accent);
+            min-width: 40px;
+            text-align: right;
+        }
+        
+        .recent-activity {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: var(--border-radius-xl);
+            padding: 30px;
+            box-shadow: var(--shadow-luxury);
+            border: 3px solid rgba(232, 184, 109, 0.2);
+            backdrop-filter: blur(20px);
+            position: relative;
+        }
+        
+        .recent-activity::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-accent);
+        }
+        
+        .activity-item {
+            display: flex;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(232, 184, 109, 0.1);
+        }
+        
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+        
+        .activity-icon {
+            font-size: 1.8rem;
+            margin-right: 16px;
+            width: 40px;
+            text-align: center;
+        }
+        
+        .activity-content {
+            flex: 1;
+        }
+        
+        .activity-text {
+            color: var(--color-primary);
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        
+        .activity-time {
+            color: var(--color-cognac);
+            font-size: 0.9rem;
+        }
+        
+        .export-section {
+            margin-top: 40px;
+            text-align: center;
+        }
+        
+        .export-btn {
+            background: var(--gradient-accent);
+            color: var(--color-primary);
+            padding: 16px 32px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-normal);
+            margin: 0 12px;
+            box-shadow: var(--shadow-medium);
+        }
+        
+        .export-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-luxury);
+        }
+        
+        .refresh-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--gradient-accent);
+            color: var(--color-primary);
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-luxury);
+            transition: var(--transition-normal);
+        }
+        
+        .refresh-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .dashboard-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="analytics-dashboard">
+        <div class="dashboard-header">
+            <div class="container">
+                <h1 class="dashboard-title">📊 益々酒造 アクセス解析</h1>
+                <p class="dashboard-subtitle">サイト利用状況をリアルタイムで把握</p>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="stats-grid">
+                <!-- 総訪問者数 -->
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-title">総訪問者数</div>
+                    </div>
+                    <div class="stat-number" id="totalVisitors">1,247</div>
+                    <div class="stat-label">今月の訪問者数</div>
+                    <div class="stat-details">
+                        <div>前月比: <span style="color: #22c55e; font-weight: 700;">+23%</span></div>
+                        <div>新規訪問者: <span style="color: var(--color-accent); font-weight: 700;">892人 (71.5%)</span></div>
+                    </div>
+                </div>
+                
+                <!-- 言語別利用状況 -->
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon">🌐</div>
+                        <div class="stat-title">言語別利用状況</div>
+                    </div>
+                    <div class="language-chart">
+                        <div class="chart-item">
+                            <div class="chart-label">🇯🇵 日本語</div>
+                            <div class="chart-bar"><div class="chart-fill" style="width: 45%;"></div></div>
+                            <div class="chart-value">45%</div>
+                        </div>
+                        <div class="chart-item">
+                            <div class="chart-label">🇺🇸 English</div>
+                            <div class="chart-bar"><div class="chart-fill" style="width: 28%;"></div></div>
+                            <div class="chart-value">28%</div>
+                        </div>
+                        <div class="chart-item">
+                            <div class="chart-label">🇨🇳 中文</div>
+                            <div class="chart-bar"><div class="chart-fill" style="width: 15%;"></div></div>
+                            <div class="chart-value">15%</div>
+                        </div>
+                        <div class="chart-item">
+                            <div class="chart-label">🇫🇷 Français</div>
+                            <div class="chart-bar"><div class="chart-fill" style="width: 12%;"></div></div>
+                            <div class="chart-value">12%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 人気商品ランキング -->
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon">🍶</div>
+                        <div class="stat-title">人気商品ランキング</div>
+                    </div>
+                    <div class="product-chart">
+                        <div class="chart-item">
+                            <div class="chart-label">純米吟醸「益々」</div>
+                            <div class="chart-bar"><div class="chart-fill" style="width: 65%;"></div></div>
+                            <div class="chart-value">342</div>
+                        </div>
+                        <div class="chart-item">
+                            <div class="chart-label">スパークリング清酒</div>
+                            <div class="chart-bar"><div class="chart-fill" style="width: 48%;"></div></div>
+                            <div class="chart-value">251</div>
+                        </div>
+                        <div class="chart-item">
+                            <div class="chart-label">古酒「益々」</div>
+                            <div class="chart-bar"><div class="chart-fill" style="width: 35%;"></div></div>
+                            <div class="chart-value">183</div>
+                        </div>
+                        <div class="chart-item">
+                            <div class="chart-label">本醸造「益々」</div>
+                            <div class="chart-bar"><div class="chart-fill" style="width: 28%;"></div></div>
+                            <div class="chart-value">147</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- AI杜氏利用状況 -->
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon">🤖</div>
+                        <div class="stat-title">AI杜氏利用状況</div>
+                    </div>
+                    <div class="stat-number" id="aiInteractions">567</div>
+                    <div class="stat-label">今月の質問数</div>
+                    <div class="stat-details">
+                        <div>よくある質問:</div>
+                        <div>1. 「純米吟醸とは？」 (89回)</div>
+                        <div>2. 「料理との相性」 (76回)</div>
+                        <div>3. 「温度の飲み方」 (64回)</div>
+                    </div>
+                </div>
+                
+                <!-- アクセス時間帯 -->
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon">⏰</div>
+                        <div class="stat-title">アクセス時間帯</div>
+                    </div>
+                    <div class="time-chart">
+                        <div class="chart-item">
+                            <div class="chart-label">朝 (6-12時)</div>
+                            <div class="chart-bar"><div class="chart-fill" style="width: 25%;"></div></div>
+                            <div class="chart-value">25%</div>
+                        </div>
+                        <div class="chart-item">
+                            <div class="chart-label">昼 (12-18時)</div>
+                            <div class="chart-bar"><div class="chart-fill" style="width: 40%;"></div></div>
+                            <div class="chart-value">40%</div>
+                        </div>
+                        <div class="chart-item">
+                            <div class="chart-label">夜 (18-24時)</div>
+                            <div class="chart-bar"><div class="chart-fill" style="width: 35%;"></div></div>
+                            <div class="chart-value">35%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 国際的アクセス -->
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon">🌍</div>
+                        <div class="stat-title">国際的アクセス</div>
+                    </div>
+                    <div class="stat-number" id="internationalVisitors">456</div>
+                    <div class="stat-label">海外からの訪問者</div>
+                    <div class="stat-details">
+                        <div>🇺🇸 アメリカ: 156人</div>
+                        <div>🇬🇧 イギリス: 89人</div>
+                        <div>🇫🇷 フランス: 78人</div>
+                        <div>🇦🇺 オーストラリア: 67人</div>
+                        <div>🇸🇬 シンガポール: 45人</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="recent-activity">
+                <div class="stat-header">
+                    <div class="stat-icon">📈</div>
+                    <div class="stat-title">最近のアクティビティ</div>
+                </div>
+                
+                <div class="activity-item">
+                    <div class="activity-icon">🛒</div>
+                    <div class="activity-content">
+                        <div class="activity-text">純米吟醸「益々」がカートに追加されました</div>
+                        <div class="activity-time">3分前 | 🇺🇸 アメリカからのユーザー</div>
+                    </div>
+                </div>
+                
+                <div class="activity-item">
+                    <div class="activity-icon">🤖</div>
+                    <div class="activity-content">
+                        <div class="activity-text">AI杜氏に「純米酒と吟醸酒の違い」について質問</div>
+                        <div class="activity-time">7分前 | 🇫🇷 フランスからのユーザー</div>
+                    </div>
+                </div>
+                
+                <div class="activity-item">
+                    <div class="activity-icon">📱</div>
+                    <div class="activity-content">
+                        <div class="activity-text">QRコードから商品詳細ページにアクセス</div>
+                        <div class="activity-time">12分前 | 🇯🇵 日本からのユーザー</div>
+                    </div>
+                </div>
+                
+                <div class="activity-item">
+                    <div class="activity-icon">🌾</div>
+                    <div class="activity-content">
+                        <div class="activity-text">米の種類説明（五百万石）がクリックされました</div>
+                        <div class="activity-time">18分前 | 🇬🇧 イギリスからのユーザー</div>
+                    </div>
+                </div>
+                
+                <div class="activity-item">
+                    <div class="activity-icon">🏭</div>
+                    <div class="activity-content">
+                        <div class="activity-text">醸造工程（発酵）の詳細説明が閲覧されました</div>
+                        <div class="activity-time">25分前 | 🇨🇳 中国からのユーザー</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="export-section">
+                <h3 style="color: var(--color-primary); margin-bottom: 24px;">データエクスポート</h3>
+                <button class="export-btn" onclick="exportCSV()">📊 CSV出力</button>
+                <button class="export-btn" onclick="exportPDF()">📄 PDF レポート</button>
+                <button class="export-btn" onclick="emailReport()">📧 メール送信</button>
+            </div>
+        </div>
+    </div>
+    
+    <button class="refresh-btn" onclick="refreshData()" title="データを更新">🔄</button>
+    
+    <script>
+        // アクセス解析機能
+        class AnalyticsDashboard {
+            constructor() {
+                this.data = this.loadAnalyticsData();
+                this.init();
+            }
+            
+            init() {
+                this.startRealTimeUpdates();
+                this.animateCharts();
+            }
+            
+            loadAnalyticsData() {
+                // 実際の実装では、サーバーからデータを取得
+                return JSON.parse(localStorage.getItem('masumasuAnalytics')) || this.generateSampleData();
+            }
+            
+            generateSampleData() {
+                const now = new Date();
+                return {
+                    totalVisitors: 1247,
+                    aiInteractions: 567,
+                    internationalVisitors: 456,
+                    languages: {
+                        ja: 45,
+                        en: 28,
+                        zh: 15,
+                        fr: 12
+                    },
+                    products: {
+                        'junmai-ginjo': 342,
+                        'sparkling': 251,
+                        'vintage': 183,
+                        'honjozo': 147,
+                        'plum': 98
+                    },
+                    timeSlots: {
+                        morning: 25,
+                        afternoon: 40,
+                        evening: 35
+                    },
+                    countries: {
+                        'US': 156,
+                        'UK': 89,
+                        'FR': 78,
+                        'AU': 67,
+                        'SG': 45
+                    },
+                    lastUpdated: now.toISOString()
+                };
+            }
+            
+            startRealTimeUpdates() {
+                // 10秒ごとにデータを更新
+                setInterval(() => {
+                    this.updateData();
+                }, 10000);
+            }
+            
+            updateData() {
+                // シミュレートされたリアルタイム更新
+                this.data.totalVisitors += Math.floor(Math.random() * 3);
+                this.data.aiInteractions += Math.floor(Math.random() * 2);
+                this.data.internationalVisitors += Math.floor(Math.random() * 2);
+                
+                this.updateDisplay();
+                this.saveData();
+            }
+            
+            updateDisplay() {
+                document.getElementById('totalVisitors').textContent = this.data.totalVisitors.toLocaleString();
+                document.getElementById('aiInteractions').textContent = this.data.aiInteractions.toLocaleString();
+                document.getElementById('internationalVisitors').textContent = this.data.internationalVisitors.toLocaleString();
+            }
+            
+            animateCharts() {
+                // チャートバーのアニメーション
+                setTimeout(() => {
+                    const fills = document.querySelectorAll('.chart-fill');
+                    fills.forEach(fill => {
+                        const width = fill.style.width;
+                        fill.style.width = '0%';
+                        setTimeout(() => {
+                            fill.style.width = width;
+                        }, 100);
+                    });
+                }, 500);
+            }
+            
+            saveData() {
+                localStorage.setItem('masumasuAnalytics', JSON.stringify(this.data));
+            }
+            
+            exportToCSV() {
+                const csvData = this.convertToCSV();
+                const blob = new Blob([csvData], { type: 'text/csv' });
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `masumasu-analytics-${new Date().toISOString().split('T')[0]}.csv`;
+                a.click();
+                window.URL.revokeObjectURL(url);
+            }
+            
+            convertToCSV() {
+                let csv = 'カテゴリ,項目,値\n';
+                csv += `総訪問者数,今月,${this.data.totalVisitors}\n`;
+                csv += `AI杜氏利用,今月,${this.data.aiInteractions}\n`;
+                csv += `海外訪問者,今月,${this.data.internationalVisitors}\n`;
+                
+                Object.entries(this.data.languages).forEach(([lang, percentage]) => {
+                    csv += `言語,${lang},${percentage}%\n`;
+                });
+                
+                Object.entries(this.data.products).forEach(([product, views]) => {
+                    csv += `商品,${product},${views}\n`;
+                });
+                
+                return csv;
+            }
+            
+            generatePDFReport() {
+                // PDF生成のシミュレーション
+                alert('PDFレポートを生成しています...\n\n含まれる内容:\n- 訪問者統計\n- 言語別利用状況\n- 商品別人気ランキング\n- AI杜氏利用統計\n- 国際的アクセス分析');
+            }
+            
+            emailReport() {
+                // メール送信のシミュレーション
+                const email = prompt('レポート送信先メールアドレスを入力してください:');
+                if (email) {
+                    alert(`解析レポートを ${email} に送信しました。\n\n送信内容:\n- 今月の統計サマリー\n- 詳細分析データ\n- 推奨アクション`);
+                }
+            }
+        }
+        
+        // グローバル関数
+        function refreshData() {
+            window.location.reload();
+        }
+        
+        function exportCSV() {
+            window.analyticsDashboard.exportToCSV();
+        }
+        
+        function exportPDF() {
+            window.analyticsDashboard.generatePDFReport();
+        }
+        
+        function emailReport() {
+            window.analyticsDashboard.emailReport();
+        }
+        
+        // 初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            window.analyticsDashboard = new AnalyticsDashboard();
+        });
+    </script>
+</body>
+</html>

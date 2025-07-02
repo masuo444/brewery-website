@@ -1,0 +1,59 @@
+{
+  "name": "masumasu-sake-website",
+  "version": "1.0.0",
+  "description": "Premium sake collection website for overseas VIPs with Van Cleef & Arpels inspired design",
+  "main": "index.html",
+  "scripts": {
+    "start": "node server/api-proxy.js",
+    "dev": "nodemon server/api-proxy.js",
+    "static": "python -m http.server 8000",
+    "serve": "npx serve .",
+    "lint": "echo 'No linting configured - vanilla HTML/CSS/JS project'",
+    "build": "echo 'No build process required - static website'"
+  },
+  "keywords": [
+    "sake",
+    "japanese",
+    "luxury",
+    "van-cleef-arpels",
+    "mobile-first",
+    "multilingual",
+    "brewery",
+    "premium",
+    "vip",
+    "tourism"
+  ],
+  "author": "Masumasu Brewery (益々酒造)",
+  "license": "MIT",
+  "homepage": "https://github.com/username/masumasu-sake-website",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/username/masumasu-sake-website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/username/masumasu-sake-website/issues"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "express-rate-limit": "^6.7.0"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "serve": "^14.0.0",
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "iOS >= 10",
+    "Android >= 6"
+  ],
+  "config": {
+    "port": 8080
+  }
+}

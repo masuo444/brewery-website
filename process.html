@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>醸造工程 - 益々酒造 | Brewing Process</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="process.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <h1 class="brand-logo">🍶 Premium Sake Tourism</h1>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <a href="about.html" class="nav-link">酒蔵について</a>
+                <a href="process.html" class="nav-link active">醸造工程</a>
+                <a href="visit.html" class="nav-link">見学・ツアー</a>
+                <a href="contact.html" class="nav-link">お問い合わせ</a>
+            </div>
+            <div class="nav-right">
+                <div class="language-selector">
+                    <select id="languageSelect">
+                        <option value="en">🇺🇸 EN</option>
+                        <option value="ja">🇯🇵 JP</option>
+                        <option value="fr">🇫🇷 FR</option>
+                        <option value="zh">🇨🇳 ZH</option>
+                    </select>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="page-title">醸造工程</h1>
+            <p class="page-subtitle">伝統の技が生み出す至高の一滴</p>
+        </div>
+    </section>
+
+    <!-- Process Overview -->
+    <section class="process-overview">
+        <div class="container">
+            <div class="overview-content">
+                <h2 class="section-title">日本酒ができるまで</h2>
+                <p class="overview-text">
+                    益々酒造では、三百年の伝統を守りながら、最新の技術も取り入れた酒造りを行っています。
+                    原料選びから瓶詰めまで、すべての工程において妥協のない品質管理を徹底し、
+                    世界に誇る日本酒を醸造しています。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Steps -->
+    <section class="process-steps">
+        <div class="container">
+            <div class="steps-container">
+                <!-- Step 1: Rice Selection -->
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <div class="step-image">
+                            <div class="step-icon">🌾</div>
+                        </div>
+                        <div class="step-info">
+                            <h3>原料米の選定</h3>
+                            <h4>Rice Selection</h4>
+                            <p>
+                                最高品質の酒造好適米を厳選。山田錦、五百万石、雄町など、
+                                それぞれの特性を活かした酒造りのため、契約農家と共に
+                                土壌づくりから取り組んでいます。
+                            </p>
+                            <div class="step-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">使用品種</span>
+                                    <span class="detail-value">山田錦、五百万石、雄町</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">産地</span>
+                                    <span class="detail-value">兵庫県特A地区</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Rice Polishing -->
+                <div class="process-step reverse">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <div class="step-image">
+                            <div class="step-icon">⚙️</div>
+                        </div>
+                        <div class="step-info">
+                            <h3>精米</h3>
+                            <h4>Rice Polishing</h4>
+                            <p>
+                                酒質に応じて精米歩合を調整。大吟醸では35%以下まで磨き上げ、
+                                雑味の原因となる外側の部分を取り除きます。
+                                この工程には最大72時間かかることもあります。
+                            </p>
+                            <div class="step-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">精米歩合</span>
+                                    <span class="detail-value">23%〜65%</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">所要時間</span>
+                                    <span class="detail-value">24〜72時間</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Washing and Soaking -->
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <div class="step-image">
+                            <div class="step-icon">💧</div>
+                        </div>
+                        <div class="step-info">
+                            <h3>洗米・浸漬</h3>
+                            <h4>Washing & Soaking</h4>
+                            <p>
+                                精米した米を丁寧に洗い、適切な水分を吸収させます。
+                                秒単位での浸漬時間管理により、理想的な蒸米の状態を実現。
+                                この工程が酒質の基礎を決定します。
+                            </p>
+                            <div class="step-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">水温</span>
+                                    <span class="detail-value">5〜10℃</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">浸漬時間</span>
+                                    <span class="detail-value">秒単位で管理</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Steaming -->
+                <div class="process-step reverse">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <div class="step-image">
+                            <div class="step-icon">♨️</div>
+                        </div>
+                        <div class="step-info">
+                            <h3>蒸米</h3>
+                            <h4>Steaming</h4>
+                            <p>
+                                和釜で約60分間蒸し上げます。外硬内軟の理想的な蒸米を目指し、
+                                温度と蒸気量を細かく調整。麹菌が活動しやすい状態を作ります。
+                            </p>
+                            <div class="step-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">蒸し時間</span>
+                                    <span class="detail-value">約60分</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">目標</span>
+                                    <span class="detail-value">外硬内軟</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5: Koji Making -->
+                <div class="process-step">
+                    <div class="step-number">05</div>
+                    <div class="step-content">
+                        <div class="step-image">
+                            <div class="step-icon">🦠</div>
+                        </div>
+                        <div class="step-info">
+                            <h3>麹造り</h3>
+                            <h4>Koji Making</h4>
+                            <p>
+                                日本酒造りの要となる麹造り。温度と湿度を厳密に管理した麹室で、
+                                48時間かけて丁寧に育てます。杜氏の経験と勘が最も問われる工程です。
+                            </p>
+                            <div class="step-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">室温</span>
+                                    <span class="detail-value">30〜32℃</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">所要時間</span>
+                                    <span class="detail-value">48時間</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 6: Yeast Starter -->
+                <div class="process-step reverse">
+                    <div class="step-number">06</div>
+                    <div class="step-content">
+                        <div class="step-image">
+                            <div class="step-icon">🧪</div>
+                        </div>
+                        <div class="step-info">
+                            <h3>酒母造り</h3>
+                            <h4>Yeast Starter</h4>
+                            <p>
+                                優良な酵母を大量に培養する酒母造り。乳酸を加えて雑菌を抑制し、
+                                約14日間かけて強健な酵母を育成します。
+                            </p>
+                            <div class="step-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">期間</span>
+                                    <span class="detail-value">約14日間</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">酵母</span>
+                                    <span class="detail-value">協会酵母、蔵付き酵母</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 7: Fermentation -->
+                <div class="process-step">
+                    <div class="step-number">07</div>
+                    <div class="step-content">
+                        <div class="step-image">
+                            <div class="step-icon">🍺</div>
+                        </div>
+                        <div class="step-info">
+                            <h3>仕込み・発酵</h3>
+                            <h4>Fermentation</h4>
+                            <p>
+                                三段仕込みで慎重に仕込みを行い、約30日間の発酵期間を経て
+                                アルコールと香味成分が生成されます。温度管理が酒質を左右します。
+                            </p>
+                            <div class="step-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">発酵期間</span>
+                                    <span class="detail-value">約30日間</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">発酵温度</span>
+                                    <span class="detail-value">6〜18℃</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 8: Pressing -->
+                <div class="process-step reverse">
+                    <div class="step-number">08</div>
+                    <div class="step-content">
+                        <div class="step-image">
+                            <div class="step-icon">🎯</div>
+                        </div>
+                        <div class="step-info">
+                            <h3>上槽（搾り）</h3>
+                            <h4>Pressing</h4>
+                            <p>
+                                発酵を終えたもろみを搾り、清酒と酒粕に分離します。
+                                搾り方により味わいが変化するため、目指す酒質に応じて
+                                最適な方法を選択します。
+                            </p>
+                            <div class="step-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">搾り方法</span>
+                                    <span class="detail-value">槽搾り、袋吊り</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">歩留まり</span>
+                                    <span class="detail-value">約70%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 9: Storage and Aging -->
+                <div class="process-step">
+                    <div class="step-number">09</div>
+                    <div class="step-content">
+                        <div class="step-image">
+                            <div class="step-icon">🏺</div>
+                        </div>
+                        <div class="step-info">
+                            <h3>貯蔵・熟成</h3>
+                            <h4>Storage & Aging</h4>
+                            <p>
+                                搾りたての新酒を低温で貯蔵し、熟成させます。
+                                この期間に角が取れ、まろやかで深みのある味わいへと変化します。
+                            </p>
+                            <div class="step-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">貯蔵温度</span>
+                                    <span class="detail-value">-5〜5℃</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">熟成期間</span>
+                                    <span class="detail-value">6ヶ月〜3年</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 10: Bottling -->
+                <div class="process-step reverse">
+                    <div class="step-number">10</div>
+                    <div class="step-content">
+                        <div class="step-image">
+                            <div class="step-icon">🍶</div>
+                        </div>
+                        <div class="step-info">
+                            <h3>瓶詰め</h3>
+                            <h4>Bottling</h4>
+                            <p>
+                                最終的な品質検査を経て、一本一本丁寧に瓶詰めします。
+                                お客様の手に届くまで、品質を保つための最後の重要な工程です。
+                            </p>
+                            <div class="step-details">
+                                <div class="detail-item">
+                                    <span class="detail-label">充填温度</span>
+                                    <span class="detail-value">5〜10℃</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">品質管理</span>
+                                    <span class="detail-value">全数検査</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Techniques -->
+    <section class="special-techniques">
+        <div class="container">
+            <h2 class="section-title">伝統の技法</h2>
+            <div class="techniques-grid">
+                <div class="technique-card">
+                    <div class="technique-icon">🌸</div>
+                    <h3>生酛造り</h3>
+                    <p>江戸時代から続く伝統製法。自然の乳酸菌を活用し、約1ヶ月かけて酒母を育成します。</p>
+                </div>
+                <div class="technique-card">
+                    <div class="technique-icon">❄️</div>
+                    <h3>雪室貯蔵</h3>
+                    <p>天然の雪を利用した貯蔵庫で熟成。一定の低温と高湿度が、まろやかな味わいを生み出します。</p>
+                </div>
+                <div class="technique-card">
+                    <div class="technique-icon">🪵</div>
+                    <h3>木桶仕込み</h3>
+                    <p>樹齢100年を超える杉の木桶で仕込み。木の呼吸が独特の風味と深みを与えます。</p>
+                </div>
+                <div class="technique-card">
+                    <div class="technique-icon">🌙</div>
+                    <h3>月光仕込み</h3>
+                    <p>満月の夜に仕込みを開始。月の引力が発酵に与える神秘的な影響を活かします。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>益々酒造</h4>
+                    <p>創業三百年の伝統と革新が生み出す、唯一無二の日本酒。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>サイトマップ</h4>
+                    <ul>
+                        <li><a href="index.html">ホーム</a></li>
+                        <li><a href="about.html">酒蔵について</a></li>
+                        <li><a href="process.html">醸造工程</a></li>
+                        <li><a href="visit.html">見学・ツアー</a></li>
+                        <li><a href="contact.html">お問い合わせ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>お問い合わせ</h4>
+                    <p>〒xxx-xxxx<br>
+                    日本国○○県○○市○○町1-2-3<br>
+                    TEL: 0120-xxx-xxx<br>
+                    Email: info@masumasu-sake.jp</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 益々酒造. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="process.js"></script>
+</body>
+</html>

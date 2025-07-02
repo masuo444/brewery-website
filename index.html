@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>益々酒造 - Premium Sake Tourism</title>
+    <meta name="description" content="益々酒造の伝統と革新を体感する、海外VIP向けプレミアム日本酒体験。10言語対応のAI杜氏と最高級の日本酒コレクション。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Dancing+Script:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="nav-brand">
+                    <a href="index.html" class="brand-link">
+                        <div class="brand-logo-container">
+                            <div class="logo-icon">🍶</div>
+                            <div class="brand-text">
+                                <h1 class="brand-logo">益々酒造</h1>
+                                <span class="brand-tagline">Masumasu Brewery</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <div class="nav-menu" id="navMenu">
+                    <ul>
+                        <li><a href="#products" class="nav-link" data-translate="navigation_products">日本酒</a></li>
+                        <li><a href="#tour" class="nav-link" data-translate="navigation_tour">ツアー</a></li>
+                        <li><a href="about.html" class="nav-link" data-translate="navigation_about">酒蔵について</a></li>
+                        <li><a href="visit.html" class="nav-link" data-translate="navigation_visit">蔵見学</a></li>
+                        <li><a href="contact.html" class="nav-link" data-translate="navigation_contact">お問い合わせ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-right">
+                    <div class="google-translate-container">
+                        <div id="google_translate_element"></div>
+                    </div>
+                    <button class="cart-btn" id="cartBtn">
+                        🛒 <span id="cartCount">0</span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Company Information Section -->
+    <section class="company-info" id="company-info">
+        <div class="container">
+            <h2 class="section-title" data-translate="company_title">🏢 益々酒造について</h2>
+            <p class="section-subtitle" data-translate="company_subtitle">300年の歴史と伝統を受け継ぐ老舗酒蔵</p>
+            
+            <div class="company-content-compact">
+                <div class="company-overview-compact">
+                    <div class="company-hero-compact">
+                        <div class="company-logo-section">
+                            <div class="company-logo">🍶</div>
+                            <div class="company-name">
+                                <h3 data-translate="company_name">株式会社益々酒造</h3>
+                                <p data-translate="company_name_en">Masumasu Brewing Co., Ltd.</p>
+                            </div>
+                        </div>
+                        <div class="company-mission">
+                            <h4 data-translate="company_mission_title">企業理念</h4>
+                            <p data-translate="company_mission">"伝統を守り、革新を追求し、世界に日本酒の素晴らしさを伝える"</p>
+                        </div>
+                    </div>
+                    
+                    <div class="company-facts-compact">
+                        <h4 data-translate="company_facts_title">📊 企業データ</h4>
+                        <div class="facts-grid-compact">
+                            <div class="fact-item-compact">
+                                <div class="fact-label" data-translate="company_established">設立</div>
+                                <div class="fact-value" data-translate="company_established_value">1724年（享保9年）</div>
+                            </div>
+                            <div class="fact-item-compact">
+                                <div class="fact-label" data-translate="company_production">年間生産量</div>
+                                <div class="fact-value" data-translate="company_production_value">2,800石（約504,000L）</div>
+                            </div>
+                            <div class="fact-item-compact">
+                                <div class="fact-label" data-translate="company_export">輸出率</div>
+                                <div class="fact-value" data-translate="company_export_value">35%（15ヶ国・地域）</div>
+                            </div>
+                            <div class="fact-item-compact">
+                                <div class="fact-label" data-translate="company_location">所在地</div>
+                                <div class="fact-value" data-translate="company_location_value">新潟県清流町</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="certifications-compact">
+                        <h4 data-translate="company_certifications_title">🏆 主な認定</h4>
+                        <div class="cert-badges">
+                            <span class="cert-badge" data-translate="cert_organic">有機JAS認定</span>
+                            <span class="cert-badge" data-translate="cert_iso">ISO 14001認証</span>
+                            <span class="cert-badge" data-translate="cert_michelin">ミシュラン星付きレストラン採用</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Chat Introduction -->
+    <section class="ai-intro" id="ai-intro">
+        <div class="container">
+            <div class="ai-intro-content">
+                <div class="ai-mascot">
+                    <div class="ai-avatar sakura-intro-avatar">
+                        <img src="images/sakura.png" alt="サクラ" class="sakura-intro-image">
+                    </div>
+                    <div class="ai-speech-bubble sakura-speech-bubble">
+                        <p data-translate="ai_greeting">こんにちは！私はサクラ、益々酒造のAIアシスタントです。<br>
+                        日本酒の疑問に何でもお答えします♪</p>
+                        <div class="speech-examples">
+                            <span class="example-q" data-translate="ai_example_1">"この酒に合う料理は？"</span>
+                            <span class="example-q" data-translate="ai_example_2">"甘口と辛口の違いは？"</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ai-features">
+                    <h3 data-translate="ai_features_title">🌸 AIソムリエ・サクラが24時間サポート</h3>
+                    <ul>
+                        <li data-translate="ai_feature_1">🍶 全銘柄の詳細情報を即座に回答</li>
+                        <li data-translate="ai_feature_2">🍽️ 料理とのペアリング提案</li>
+                        <li data-translate="ai_feature_3">🌐 10言語対応で世界中のゲストに対応</li>
+                        <li data-translate="ai_feature_4">📚 300年の歴史と醸造知識をAIが学習</li>
+                    </ul>
+                    <button class="ai-chat-btn sakura-chat-btn" id="aiChatStartBtn" data-translate="ai_chat_start">
+                        🌸 サクラに相談してみる
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tour Translation System -->
+    <section class="tour-translation" id="tour">
+        <div class="container">
+            <h2 class="section-title" data-translate="tour_title">🌐 酒造ツアーの多言語サポート</h2>
+            <div class="translation-system">
+                <div class="tour-content">
+                    <div class="tour-image">
+                        <div class="image-frame">
+                            <div class="tour-photo">🏭</div>
+                            <div class="image-caption" data-translate="tour_image_caption">300年の歴史を感じる酒蔵見学</div>
+                        </div>
+                    </div>
+                    <div class="tour-description">
+                        <h3 data-translate="tour_subtitle">五感で体験する、日本酒造りの現場</h3>
+                        <div class="description-content">
+                            <p data-translate="tour_description_1"><strong>ガイドによる丁寧な説明とともに、五感を使って米と水の変化の物語を体験。</strong></p>
+                            <p data-translate="tour_description_2">仕込み蔵の香り、もろみの音、そして完成した酒の味わい──それらを<strong>あなたの言葉</strong>で理解できるよう、多言語ガイド・音声解説をご用意しています。</p>
+                            <div class="tour-example">
+                                <h4 data-translate="tour_example_title">🗣️ 翻訳例</h4>
+                                <div class="translation-examples">
+                                    <div class="example-box">
+                                        <div class="example-ja">
+                                            <span class="lang-label">🇯🇵 日本語:</span>
+                                            <p data-translate="tour_example_ja">"この工程では、蒸した米に麹菌を植え付けます。温度管理が非常に重要で、職人の経験と技術が活かされる場面です。"</p>
+                                        </div>
+                                        <div class="example-en">
+                                            <span class="lang-label">🇺🇸 English:</span>
+                                            <p data-translate="tour_example_en">"In this process, we inoculate steamed rice with koji spores. Temperature control is crucial, and this is where our craftsmen's experience and expertise truly shine."</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title" data-translate="products_title">🍶 プレミアム日本酒コレクション</h2>
+            <p class="section-subtitle" data-translate="products_subtitle">世界最高峰の日本酒を、あなたに。</p>
+            
+            
+            <div class="products-showcase">
+                <!-- Product 1: 純米吟醸「益々」 -->
+                <div class="sake-card luxury" data-product-id="1">
+                    <div class="sake-image-container">
+                        <div class="sake-image-frame">
+                            <img src="images/products/junmai-ginjo.png" alt="純米吟醸「益々」" class="sake-bottle">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="sake-badge premium-badge">
+                            <span>PREMIUM</span>
+                        </div>
+                    </div>
+                    <div class="sake-info">
+                        <div class="sake-header">
+                            <h3 class="sake-name" data-translate="sake_junmai_ginjo_name">純米吟醸「益々」</h3>
+                            <p class="sake-category" data-translate="sake_junmai_ginjo_type">Junmai Ginjo</p>
+                        </div>
+                        <p class="sake-description" data-translate="sake_junmai_ginjo_desc">メロンやリンゴを思わせるフルーティーな香り。軽快でキレの良い後味。杯を重ねるごとに増す、華やかな香りを表現。</p>
+                        <div class="sake-specs">
+                            <div class="spec-item">
+                                <div class="spec-label" data-translate="alcohol">アルコール度数</div>
+                                <div class="spec-value">15.5%</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label" data-translate="ricePalish">精米歩合</div>
+                                <div class="spec-value">50%</div>
+                            </div>
+                        </div>
+                        <a href="products/junmai-ginjo.html" class="sake-link">
+                            <button class="explore-btn" data-translate="viewDetails">
+                                <span>詳細を見る</span>
+                                <i class="arrow">→</i>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 2: 本醸造「益々」 -->
+                <div class="sake-card classic" data-product-id="2">
+                    <div class="sake-image-container">
+                        <div class="sake-image-frame">
+                            <img src="images/products/honjozo.png" alt="本醸造「益々」" class="sake-bottle">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="sake-badge classic-badge">
+                            <span>CLASSIC</span>
+                        </div>
+                    </div>
+                    <div class="sake-info">
+                        <div class="sake-header">
+                            <h3 class="sake-name" data-translate="sake_honjozo_name">本醸造「益々」</h3>
+                            <p class="sake-category" data-translate="sake_honjozo_type">Honjozo</p>
+                        </div>
+                        <p class="sake-description" data-translate="sake_honjozo_desc">スッキリとした辛口で、抜群のキレ。毎日の晩酌に寄り添う味わい。日々の食卓を豊かにする、クラシックな味わい。</p>
+                        <div class="sake-specs">
+                            <div class="spec-item">
+                                <div class="spec-label" data-translate="alcohol">アルコール度数</div>
+                                <div class="spec-value">15.0%</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label" data-translate="ricePalish">精米歩合</div>
+                                <div class="spec-value">65%</div>
+                            </div>
+                        </div>
+                        <a href="products/honjozo.html" class="sake-link">
+                            <button class="explore-btn" data-translate="viewDetails">
+                                <span>詳細を見る</span>
+                                <i class="arrow">→</i>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 3: スパークリング清酒「益々」 -->
+                <div class="sake-card sparkling" data-product-id="3">
+                    <div class="sake-image-container">
+                        <div class="sake-image-frame">
+                            <img src="images/products/sparkling.png" alt="スパークリング清酒「益々」" class="sake-bottle">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="sake-badge sparkling-badge">
+                            <span>SPARKLING</span>
+                        </div>
+                    </div>
+                    <div class="sake-info">
+                        <div class="sake-header">
+                            <h3 class="sake-name" data-translate="sake_sparkling_name">スパークリング清酒「益々」</h3>
+                            <p class="sake-category" data-translate="sake_sparkling_type">Sparkling Sake</p>
+                        </div>
+                        <p class="sake-description" data-translate="sake_sparkling_desc">きめ細やかな泡と、爽やかな酸味。乾杯シーンを華やかに彩る。祝いの席にふさわしい、華やかな一本。</p>
+                        <div class="sake-specs">
+                            <div class="spec-item">
+                                <div class="spec-label" data-translate="alcohol">アルコール度数</div>
+                                <div class="spec-value">12.0%</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">推奨温度</div>
+                                <div class="spec-value">5℃</div>
+                            </div>
+                        </div>
+                        <a href="products/sparkling.html" class="sake-link">
+                            <button class="explore-btn" data-translate="viewDetails">
+                                <span>詳細を見る</span>
+                                <i class="arrow">→</i>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 4: 古酒「益々」 -->
+                <div class="sake-card vintage" data-product-id="4">
+                    <div class="sake-image-container">
+                        <div class="sake-image-frame">
+                            <img src="images/products/vintage.png" alt="古酒「益々」" class="sake-bottle">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="sake-badge vintage-badge">
+                            <span>VINTAGE</span>
+                        </div>
+                        <div class="sake-badge limited-badge">
+                            <span>LIMITED</span>
+                        </div>
+                    </div>
+                    <div class="sake-info">
+                        <div class="sake-header">
+                            <h3 class="sake-name" data-translate="sake_vintage_name">古酒「益々」</h3>
+                            <p class="sake-category" data-translate="sake_vintage_type">Aged Sake</p>
+                        </div>
+                        <p class="sake-description" data-translate="sake_vintage_desc">5年以上熟成。カラメルやナッツのような熟成香と、まろやかで深みのある味わい。時が醸し出す、唯一無二の味わい。</p>
+                        <div class="sake-specs">
+                            <div class="spec-item">
+                                <div class="spec-label" data-translate="alcohol">アルコール度数</div>
+                                <div class="spec-value">18.0%</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">熟成期間</div>
+                                <div class="spec-value">5年以上</div>
+                            </div>
+                        </div>
+                        <a href="products/vintage.html" class="sake-link">
+                            <button class="explore-btn" data-translate="viewDetails">
+                                <span>詳細を見る</span>
+                                <i class="arrow">→</i>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 5: 梅酒「益々」 -->
+                <div class="sake-card liqueur" data-product-id="5">
+                    <div class="sake-image-container">
+                        <div class="sake-image-frame">
+                            <img src="images/products/plum.png" alt="梅酒「益々」" class="sake-bottle">
+                            <div class="image-overlay"></div>
+                        </div>
+                        <div class="sake-badge liqueur-badge">
+                            <span>LIQUEUR</span>
+                        </div>
+                    </div>
+                    <div class="sake-info">
+                        <div class="sake-header">
+                            <h3 class="sake-name" data-translate="sake_plum_name">梅酒「益々」</h3>
+                            <p class="sake-category" data-translate="sake_plum_type">Plum Liqueur</p>
+                        </div>
+                        <p class="sake-description" data-translate="sake_plum_desc">純米酒で漬け込んだ、上品な梅の香りと、すっきりとした甘さ。日本酒蔵が造る、こだわりの梅酒。</p>
+                        <div class="sake-specs">
+                            <div class="spec-item">
+                                <div class="spec-label" data-translate="alcohol">アルコール度数</div>
+                                <div class="spec-value">12.0%</div>
+                            </div>
+                            <div class="spec-item">
+                                <div class="spec-label">推奨</div>
+                                <div class="spec-value">ロック・ソーダ</div>
+                            </div>
+                        </div>
+                        <a href="products/plum-wine.html" class="sake-link">
+                            <button class="explore-btn" data-translate="viewDetails">
+                                <span>詳細を見る</span>
+                                <i class="arrow">→</i>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Brewing Process Section -->
+    <section class="brewing-process" id="brewing-process">
+        <div class="container">
+            <h2 class="section-title" data-translate="brewing_process_title">🏭 醸造工程を見て学ぶ</h2>
+            <p class="section-subtitle" data-translate="brewing_process_subtitle">各工程をクリックして詳細説明をご覧ください</p>
+            
+            <div class="process-interactive">
+                <div class="process-diagram">
+                    <div class="process-step-interactive" data-step="rice-washing">
+                        <div class="step-icon">🌾</div>
+                        <span class="step-name" data-translate="step_rice_washing">米洗い</span>
+                    </div>
+                    <div class="process-arrow">→</div>
+                    
+                    <div class="process-step-interactive" data-step="steaming">
+                        <div class="step-icon">♨️</div>
+                        <span class="step-name" data-translate="step_steaming">蒸米</span>
+                    </div>
+                    <div class="process-arrow">→</div>
+                    
+                    <div class="process-step-interactive" data-step="koji">
+                        <div class="step-icon">🍄</div>
+                        <span class="step-name" data-translate="step_koji">麹造り</span>
+                    </div>
+                    <div class="process-arrow">→</div>
+                    
+                    <div class="process-step-interactive" data-step="fermentation">
+                        <div class="step-icon">⚗️</div>
+                        <span class="step-name" data-translate="step_fermentation">発酵</span>
+                    </div>
+                    <div class="process-arrow">→</div>
+                    
+                    <div class="process-step-interactive" data-step="pressing">
+                        <div class="step-icon">🏺</div>
+                        <span class="step-name" data-translate="step_pressing">圧搾</span>
+                    </div>
+                    <div class="process-arrow">→</div>
+                    
+                    <div class="process-step-interactive" data-step="aging">
+                        <div class="step-icon">🍶</div>
+                        <span class="step-name" data-translate="step_aging">熟成</span>
+                    </div>
+                </div>
+                
+                <div class="process-explanation" id="processExplanation">
+                    <div class="explanation-placeholder">
+                        <h3 data-translate="click_process_title">工程をクリックしてください</h3>
+                        <p data-translate="click_process_subtitle">各段階の詳細説明をご覧いただけます</p>
+                        <div class="explanation-icon">👆</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rice Types Interactive Section -->
+    <section class="rice-types" id="rice-types">
+        <div class="container">
+            <h2 class="section-title" data-translate="rice_types_title">🌾 酒造好適米について</h2>
+            <p class="section-subtitle" data-translate="rice_types_subtitle">使用している米の種類をクリックして特徴をご覧ください</p>
+            
+            <div class="rice-grid">
+                <div class="rice-card interactive-rice" data-rice="gohyakumangoku">
+                    <div class="rice-image">🌾</div>
+                    <h3 data-translate="rice_gohyaku_name">五百万石</h3>
+                    <p class="rice-origin" data-translate="rice_gohyaku_origin">新潟県産</p>
+                </div>
+                
+                <div class="rice-card interactive-rice" data-rice="koshiibuki">
+                    <div class="rice-image">🌾</div>
+                    <h3 data-translate="rice_koshi_name">こしいぶき</h3>
+                    <p class="rice-origin" data-translate="rice_koshi_origin">新潟県産</p>
+                </div>
+                
+                <div class="rice-card interactive-rice" data-rice="yamadanishiki">
+                    <div class="rice-image">🌾</div>
+                    <h3 data-translate="rice_yamada_name">山田錦</h3>
+                    <p class="rice-origin" data-translate="rice_yamada_origin">兵庫県産</p>
+                </div>
+            </div>
+            
+            <div class="rice-explanation" id="riceExplanation">
+                <div class="explanation-placeholder">
+                    <h3 data-translate="click_rice_title">米の種類をクリックしてください</h3>
+                    <p data-translate="click_rice_subtitle">各品種の特徴と使用される銘柄をご紹介します</p>
+                    <div class="explanation-icon">👆</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards and Export Section -->
+    <section class="awards-export" id="awards-export">
+        <div class="container">
+            <h2 class="section-title" data-translate="awards_title">🏆 受賞歴・海外展開</h2>
+            <p class="section-subtitle" data-translate="awards_subtitle">国際的に認められた品質と信頼</p>
+            
+            <div class="awards-grid">
+                <div class="award-category">
+                    <h3 data-translate="international_awards">国際品評会受賞歴</h3>
+                    <div class="awards-list">
+                        <div class="award-item">
+                            <div class="award-icon">🥇</div>
+                            <div class="award-details">
+                                <h4 data-translate="ifa_award">IWC（インターナショナル・ワイン・チャレンジ）</h4>
+                                <p data-translate="ifa_year">2023年 純米吟醸部門 金賞受賞</p>
+                            </div>
+                        </div>
+                        <div class="award-item">
+                            <div class="award-icon">🥈</div>
+                            <div class="award-details">
+                                <h4 data-translate="sake_competition">全国新酒鑑評会</h4>
+                                <p data-translate="sake_comp_year">2022年・2023年 連続金賞受賞</p>
+                            </div>
+                        </div>
+                        <div class="award-item">
+                            <div class="award-icon">🥉</div>
+                            <div class="award-details">
+                                <h4 data-translate="london_sake">ロンドン酒チャレンジ</h4>
+                                <p data-translate="london_year">2023年 純米部門 銀賞受賞</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="export-category">
+                    <h3 data-translate="export_destinations">海外輸出先</h3>
+                    <div class="export-map">
+                        <div class="country-item" data-country="usa">
+                            <div class="country-flag">🇺🇸</div>
+                            <span data-translate="country_usa">アメリカ</span>
+                        </div>
+                        <div class="country-item" data-country="uk">
+                            <div class="country-flag">🇬🇧</div>
+                            <span data-translate="country_uk">イギリス</span>
+                        </div>
+                        <div class="country-item" data-country="france">
+                            <div class="country-flag">🇫🇷</div>
+                            <span data-translate="country_france">フランス</span>
+                        </div>
+                        <div class="country-item" data-country="hongkong">
+                            <div class="country-flag">🇭🇰</div>
+                            <span data-translate="country_hk">香港</span>
+                        </div>
+                        <div class="country-item" data-country="singapore">
+                            <div class="country-flag">🇸🇬</div>
+                            <span data-translate="country_sg">シンガポール</span>
+                        </div>
+                        <div class="country-item" data-country="australia">
+                            <div class="country-flag">🇦🇺</div>
+                            <span data-translate="country_au">オーストラリア</span>
+                        </div>
+                    </div>
+                    
+                    <div class="export-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">15+</div>
+                            <div class="stat-label" data-translate="export_countries">輸出国・地域</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">300年</div>
+                            <div class="stat-label" data-translate="brewing_history">醸造の歴史</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">5銘柄</div>
+                            <div class="stat-label" data-translate="premium_lineup">プレミアムライン</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-body" id="modalBody">
+                <!-- Modal content will be dynamically generated -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3 data-translate="cart_title">ショッピングカート</h3>
+            <button class="cart-close" id="cartClose">&times;</button>
+        </div>
+        <div class="cart-content" id="cartContent">
+            <div class="cart-empty">
+                <p data-translate="cart_empty">カートは空です</p>
+                <div class="empty-cart-icon">🛒</div>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span data-translate="cart_total">合計: ¥<span id="cartTotal">0</span></span>
+            </div>
+            <button class="checkout-btn" id="checkoutBtn" data-translate="cart_checkout">お会計に進む</button>
+        </div>
+    </div>
+
+    <!-- GPT Integrated Chat will be dynamically created by ai-chat-gpt.js -->
+
+    <!-- QR Code Scanner -->
+    <div class="qr-scanner" id="qrScanner" style="display: none;">
+        <div class="scanner-overlay">
+            <div class="scanner-content">
+                <h3 data-translate="qr_title">QRコードスキャナー</h3>
+                <div class="scanner-frame">
+                    <div class="scanner-line"></div>
+                    <p data-translate="qr_instruction">QRコードをカメラに向けてください</p>
+                </div>
+                <button class="scanner-close" id="scannerClose" data-translate="qr_close">閉じる</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-actions">
+        <button class="float-btn ai-btn" id="aiSommelierBtn" title="AI杜氏に相談" data-translate="float_ai_title">
+            🤖
+        </button>
+        <button class="float-btn qr-btn" id="qrScanBtn" title="QRスキャナー" data-translate="float_qr_title">
+            📱
+        </button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 data-translate="footer_brewery_title">益々酒造</h4>
+                    <p data-translate="footer_brewery_desc">創業300年。世界最高峰の日本酒を、心を込めてお届けします。伝統と革新が織りなす、唯一無二の味わいをご堪能ください。</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="YouTube">📺</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 data-translate="footer_service_title">カスタマーサービス</h4>
+                    <ul>
+                        <li><a href="contact.html" data-translate="footer_contact">お問い合わせ</a></li>
+                        <li><a href="#shipping" data-translate="footer_shipping">配送について</a></li>
+                        <li><a href="#returns" data-translate="footer_returns">返品・交換</a></li>
+                        <li><a href="#faq" data-translate="footer_faq">よくある質問</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-translate="footer_sake_title">日本酒について</h4>
+                    <ul>
+                        <li><a href="process.html" data-translate="footer_process">醸造工程</a></li>
+                        <li><a href="#tasting" data-translate="footer_tasting">テイスティングガイド</a></li>
+                        <li><a href="#pairing" data-translate="footer_pairing">料理との相性</a></li>
+                        <li><a href="#regions" data-translate="footer_regions">日本酒の産地</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-translate="footer_vip_title">VIPサービス</h4>
+                    <ul>
+                        <li><a href="visit.html" data-translate="footer_tour">プライベートツアー</a></li>
+                        <li><a href="#concierge" data-translate="footer_concierge">パーソナルコンシェルジュ</a></li>
+                        <li><a href="#cellar" data-translate="footer_cellar">セラー管理サービス</a></li>
+                        <li><a href="#events" data-translate="footer_events">限定イベント</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-translate="footer_copyright">&copy; 2024 益々酒造. All rights reserved.</p>
+                <p data-translate="footer_tagline">🍶 伝統の技 • 世界への架け橋 • 心からのおもてなし</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Sticky CTA -->
+    <div class="mobile-sticky-cta">
+        <a href="#products" class="sticky-cta-btn" data-translate="mobile_cta">プレミアム日本酒を見る</a>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/ai-chat-secure.js"></script>
+    
+    <!-- Google Translate -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'ja',
+                includedLanguages: 'en,fr,zh,ko,it,es,vi,ar,de,ru,pt,th,hi,tr,pl,nl,sv,da,no,fi,he,id,ms,tl,bg,hr,cs,et,lv,lt,hu,mt,sk,sl,ro,uk,el,ca,eu,ga,cy,is,fa,ur,bn,ta,te,ml,kn,gu,pa,ne,si,my,km,lo,ka,am,sw,zu,af,sq,az,be,bs,mk,mn,sr,uz,ky,kk,tg,hy,ka',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                gaTrack: true,
+                gaId: 'UA-XXXXX-Y'
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="js/interactive.js"></script>
+    <script src="js/analytics.js"></script>
+</body>
+</html>
