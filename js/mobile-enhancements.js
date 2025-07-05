@@ -101,14 +101,19 @@
 
     // Global function to open AI chat
     window.openAIChat = function() {
-        // Check if AI chat module exists
-        if (typeof window.startAIChat === 'function') {
-            window.startAIChat();
-        } else if (typeof window.openAIModal === 'function') {
-            window.openAIModal();
+        // Check if AI Sakura chat exists
+        if (typeof window.openSakuraChat === 'function') {
+            window.openSakuraChat();
         } else {
-            // Fallback - redirect to contact page with chat parameter
-            window.location.href = 'contact.html?chat=ai';
+            // Load AI Sakura chat script if not loaded
+            const script = document.createElement('script');
+            script.src = 'js/ai-sakura-chat.js';
+            script.onload = function() {
+                if (typeof window.openSakuraChat === 'function') {
+                    window.openSakuraChat();
+                }
+            };
+            document.head.appendChild(script);
         }
     };
 
