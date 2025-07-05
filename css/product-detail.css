@@ -1162,3 +1162,57 @@
     background: linear-gradient(135deg, var(--color-accent-light) 0%, var(--color-accent) 100%);
 }
 
+/* Mobile AI Chatbot for Product Pages */
+@media (max-width: 768px) {
+    /* Mobile AI Chatbot - Hidden on desktop */
+    .mobile-ai-chatbot {
+        display: block !important;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: var(--gradient-accent);
+        padding: 15px;
+        text-align: center;
+        z-index: 1000;
+        box-shadow: var(--shadow-large);
+        border-top: 3px solid var(--color-accent);
+    }
+    
+    .mobile-ai-chatbot .chatbot-btn {
+        background: var(--color-background);
+        color: var(--color-primary);
+        border: none;
+        padding: 12px 24px;
+        border-radius: 25px;
+        font-family: var(--font-japanese);
+        font-weight: 600;
+        font-size: 16px;
+        cursor: pointer;
+        box-shadow: var(--shadow-medium);
+        transition: var(--transition-normal);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .mobile-ai-chatbot .chatbot-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-large);
+    }
+    
+    .mobile-ai-chatbot .chatbot-btn:active {
+        transform: translateY(0);
+    }
+    
+    /* Add bottom padding to body to prevent content overlap */
+    body.mobile-chatbot-active {
+        padding-bottom: 80px;
+    }
+    
+    /* Ensure footer doesn't overlap with chatbot */
+    .footer {
+        margin-bottom: 80px;
+    }
+}
+

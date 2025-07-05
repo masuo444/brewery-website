@@ -372,17 +372,92 @@ body {
 @media (max-width: 768px) {
     .google-translate-container {
         margin-left: 5px;
+        order: 1;
     }
     
     #google_translate_element .goog-te-gadget-simple {
         padding: 6px 12px;
         font-size: 12px;
+        border-radius: 20px;
     }
     
     .nav-right {
-        flex-direction: column;
+        flex-direction: row;
+        gap: 8px;
+        align-items: center;
+    }
+    
+    /* Mobile header improvements */
+    .header .nav {
+        flex-wrap: wrap;
+    }
+    
+    .nav-menu {
+        order: 3;
+        width: 100%;
+        margin-top: 10px;
+    }
+    
+    .nav-menu ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+    }
+    
+    .nav-menu li {
+        margin: 0 5px;
+    }
+    
+    /* Mobile AI Chatbot */
+    .mobile-ai-chatbot {
+        display: block !important;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: var(--gradient-accent);
+        padding: 15px;
+        text-align: center;
+        z-index: 1000;
+        box-shadow: var(--shadow-large);
+        border-top: 3px solid var(--color-accent);
+    }
+    
+    .mobile-ai-chatbot .chatbot-btn {
+        background: var(--color-background);
+        color: var(--color-primary);
+        border: none;
+        padding: 12px 24px;
+        border-radius: 25px;
+        font-family: var(--font-japanese);
+        font-weight: 600;
+        font-size: 16px;
+        cursor: pointer;
+        box-shadow: var(--shadow-medium);
+        transition: var(--transition-normal);
+        display: inline-flex;
+        align-items: center;
         gap: 8px;
     }
+    
+    .mobile-ai-chatbot .chatbot-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-large);
+    }
+    
+    .mobile-ai-chatbot .chatbot-btn:active {
+        transform: translateY(0);
+    }
+    
+    /* Add bottom padding to body to prevent content overlap */
+    body.mobile-chatbot-active {
+        padding-bottom: 80px;
+    }
+}
+
+/* Mobile AI Chatbot - Hidden on desktop */
+.mobile-ai-chatbot {
+    display: none;
 }
 
 /* Premium Cart Button */

@@ -26,13 +26,8 @@
                 <a href="contact.html" class="nav-link active">お問い合わせ</a>
             </div>
             <div class="nav-right">
-                <div class="language-selector">
-                    <select id="languageSelect">
-                        <option value="en">🇺🇸 EN</option>
-                        <option value="ja">🇯🇵 JP</option>
-                        <option value="fr">🇫🇷 FR</option>
-                        <option value="zh">🇨🇳 ZH</option>
-                    </select>
+                <div class="google-translate-container">
+                    <div id="google_translate_element"></div>
                 </div>
             </div>
         </nav>
@@ -332,5 +327,27 @@
     </div>
 
     <script src="contact.js"></script>
+    <script src="js/mobile-enhancements.js"></script>
+    
+    <!-- Google Translate -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'ja',
+                includedLanguages: 'en,fr,zh,ko,it,es,vi,ar,de,ru,pt,th,hi,tr,pl,nl,sv,da,no,fi,he,id,ms,tl,bg,hr,cs,et,lv,lt,hu,mt,sk,sl,ro,uk,el,ca,eu,ga,cy,is,fa,ur,bn,ta,te,ml,kn,gu,pa,ne,si,my,km,lo,ka,am,sw,zu,af,sq,az,be,bs,mk,mn,sr,uz,ky,kk,tg,hy,ka',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                gaTrack: true,
+                gaId: 'UA-XXXXX-Y'
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    
+    <!-- Mobile AI Chatbot -->
+    <div class="mobile-ai-chatbot">
+        <button class="chatbot-btn" onclick="openAIChat()">
+            🌸 AIサクラに相談する
+        </button>
+    </div>
 </body>
 </html>
