@@ -71,11 +71,23 @@
         // Create chatbot container
         const chatbotContainer = document.createElement('div');
         chatbotContainer.className = 'mobile-ai-chatbot';
-        chatbotContainer.innerHTML = `
-            <button class="chatbot-btn" onclick="openAIChat()">
-                🌸 AIサクラに相談する
-            </button>
-        `;
+        
+        const chatbotButton = document.createElement('button');
+        chatbotButton.className = 'chatbot-btn';
+        chatbotButton.textContent = '🌸 AIサクラに相談する';
+        
+        // Add click event listener directly
+        chatbotButton.addEventListener('click', function() {
+            console.log('Chatbot button clicked');
+            if (typeof window.openAIChat === 'function') {
+                window.openAIChat();
+            } else {
+                alert('チャットボット機能を読み込み中です...');
+                console.error('openAIChat function not available');
+            }
+        });
+        
+        chatbotContainer.appendChild(chatbotButton);
 
         // Add to body
         document.body.appendChild(chatbotContainer);
@@ -101,17 +113,30 @@
 
     // Global function to open AI chat
     window.openAIChat = function() {
+        console.log('openAIChat called');
         // Check if AI Sakura chat exists
         if (typeof window.openSakuraChat === 'function') {
+            console.log('Opening Sakura chat');
             window.openSakuraChat();
         } else {
+            console.log('Sakura chat not loaded, attempting to load and open');
+            // Try a simple alert first to test if function is called
+            alert('AIサクラチャットボットを読み込み中...');
+            
             // Load AI Sakura chat script if not loaded
             const script = document.createElement('script');
             script.src = 'js/ai-sakura-chat.js';
             script.onload = function() {
+                console.log('Sakura chat script loaded');
                 if (typeof window.openSakuraChat === 'function') {
                     window.openSakuraChat();
+                } else {
+                    alert('チャットボットの読み込みに失敗しました。');
                 }
+            };
+            script.onerror = function() {
+                console.error('Failed to load ai-sakura-chat.js');
+                alert('チャットボットスクリプトの読み込みに失敗しました。');
             };
             document.head.appendChild(script);
         }

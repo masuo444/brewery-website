@@ -423,11 +423,18 @@
 
     // Open chatbot
     function openSakuraChat() {
+        console.log('openSakuraChat function called');
         const chatContainer = document.getElementById('ai-sakura-chat');
         if (chatContainer) {
+            console.log('Chat container found, opening chat');
             chatContainer.style.display = 'flex';
             chatState.isOpen = true;
-            document.getElementById('ai-chat-input').focus();
+            const input = document.getElementById('ai-chat-input');
+            if (input) {
+                input.focus();
+            }
+        } else {
+            console.error('Chat container not found');
         }
     }
 
