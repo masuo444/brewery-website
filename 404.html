@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ページが見つかりません - 益々酒造</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        // GitHub Pages 404 redirect handling
+        (function() {
+            const path = window.location.pathname;
+            const search = window.location.search;
+            const hash = window.location.hash;
+            
+            // If path doesn't end with .html, try adding it
+            if (!path.endsWith('.html') && !path.endsWith('/')) {
+                window.location.href = path + '.html' + search + hash;
+            }
+        })();
+    </script>
+</head>
+<body>
+    <div class="error-page">
+        <h1>404 - ページが見つかりません</h1>
+        <p>お探しのページは存在しません。</p>
+        <a href="index.html">トップページに戻る</a>
+    </div>
+</body>
+</html>
