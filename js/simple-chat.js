@@ -38,9 +38,14 @@
             'ギフト包装も承っております🎁 特別な日の贈り物にいかがでしょうか。'
         ],
         default: [
-            '申し訳ございませんが、その件についてはお電話でお問い合わせください📞 025-123-4567',
-            'より詳しい情報は当蔵のスタッフがご案内いたします。お気軽にお問い合わせください✨',
-            'その他のご質問がございましたら、お問い合わせページからご連絡ください📧'
+            'ありがとうございます！益々酒造について他にも何かお聞きになりたいことはありますか？🍶',
+            '日本酒のことなら何でもお任せください！どのようなことが知りたいですか？✨',
+            'お役に立てるよう頑張ります！他にもご質問があればお気軽にどうぞ🌸'
+        ],
+        welcome: [
+            'こんにちは！AIサクラです🌸 益々酒造へようこそ！日本酒について何でもお聞きください。',
+            'いらっしゃいませ！私は益々酒造のAI杜氏、サクラです🌸 お気軽にご質問ください。',
+            'ようこそ益々酒造へ！🍶 日本酒のことなら何でもお答えします。どのようなことが知りたいですか？'
         ]
     };
 
@@ -64,13 +69,7 @@
                 
                 <!-- メッセージエリア -->
                 <div id="sakura-messages" style="height: 350px; overflow-y: auto; padding: 15px; background: #f8f9fa;">
-                    <div style="background: white; padding: 12px; border-radius: 10px; margin-bottom: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 5px;">
-                            <span>🌸</span>
-                            <strong style="color: #ff6b8a;">AIサクラ</strong>
-                        </div>
-                        <div>こんにちは！AIサクラです🌸<br>益々酒造について何でもお聞きください！</div>
-                    </div>
+                    <!-- Initial messages will be added by JavaScript -->
                 </div>
                 
                 <!-- クイック返信ボタン -->
@@ -129,6 +128,13 @@
             overlay.style.display = 'block';
             button.style.display = 'none';
             chatOpen = true;
+            
+            // 初回オープン時にウェルカムメッセージを追加
+            const messagesDiv = document.getElementById('sakura-messages');
+            if (messagesDiv && messagesDiv.children.length === 0) {
+                const welcomeMessage = responses.welcome[Math.floor(Math.random() * responses.welcome.length)];
+                addAIMessage(welcomeMessage);
+            }
             
             // 入力フィールドにフォーカス
             setTimeout(() => {
@@ -219,40 +225,58 @@
 
     // 応答生成
     function generateResponse(message) {
+        console.log('Generating response for:', message);
+        
+        if (!message || message.trim() === '') {
+            return responses.default[0];
+        }
+        
         const lowerMessage = message.toLowerCase();
         
         // 挨拶
-        if (lowerMessage.includes('こんにちは') || lowerMessage.includes('こんばんは') || lowerMessage.includes('はじめまして')) {
+        if (lowerMessage.includes('こんにちは') || lowerMessage.includes('こんばんは') || lowerMessage.includes('はじめまして') || lowerMessage.includes('hello') || lowerMessage.includes('hi')) {
             return responses.greetings[Math.floor(Math.random() * responses.greetings.length)];
         }
         
         // おすすめ
-        if (lowerMessage.includes('おすすめ') || lowerMessage.includes('人気') || lowerMessage.includes('どれが')) {
+        if (lowerMessage.includes('おすすめ') || lowerMessage.includes('人気') || lowerMessage.includes('どれが') || lowerMessage.includes('どの')) {
             return responses.recommendations[Math.floor(Math.random() * responses.recommendations.length)];
         }
         
         // ペアリング・料理
-        if (lowerMessage.includes('料理') || lowerMessage.includes('相性') || lowerMessage.includes('合う') || lowerMessage.includes('ペアリング')) {
+        if (lowerMessage.includes('料理') || lowerMessage.includes('相性') || lowerMessage.includes('合う') || lowerMessage.includes('ペアリング') || lowerMessage.includes('食べ物')) {
             return responses.pairings[Math.floor(Math.random() * responses.pairings.length)];
         }
         
         // 飲み方・温度
-        if (lowerMessage.includes('飲み方') || lowerMessage.includes('温度') || lowerMessage.includes('冷や') || lowerMessage.includes('燗')) {
+        if (lowerMessage.includes('飲み方') || lowerMessage.includes('温度') || lowerMessage.includes('冷や') || lowerMessage.includes('燗') || lowerMessage.includes('飲む')) {
             return responses.serving[Math.floor(Math.random() * responses.serving.length)];
         }
         
         // 見学・ツアー
-        if (lowerMessage.includes('見学') || lowerMessage.includes('ツアー') || lowerMessage.includes('訪問')) {
+        if (lowerMessage.includes('見学') || lowerMessage.includes('ツアー') || lowerMessage.includes('訪問') || lowerMessage.includes('行き')) {
             return responses.visit[Math.floor(Math.random() * responses.visit.length)];
         }
         
         // 価格
-        if (lowerMessage.includes('価格') || lowerMessage.includes('値段') || lowerMessage.includes('いくら') || lowerMessage.includes('円')) {
+        if (lowerMessage.includes('価格') || lowerMessage.includes('値段') || lowerMessage.includes('いくら') || lowerMessage.includes('円') || lowerMessage.includes('値') || lowerMessage.includes('お金')) {
             return responses.price[Math.floor(Math.random() * responses.price.length)];
         }
         
+        // 感謝
+        if (lowerMessage.includes('ありがとう') || lowerMessage.includes('感謝') || lowerMessage.includes('thanks')) {
+            return 'どういたしまして！他にも何かご質問があればお気軽にどうぞ🌸';
+        }
+        
+        // 日本酒関連
+        if (lowerMessage.includes('日本酒') || lowerMessage.includes('酒') || lowerMessage.includes('sake')) {
+            return responses.recommendations[Math.floor(Math.random() * responses.recommendations.length)];
+        }
+        
         // デフォルト応答
-        return responses.default[Math.floor(Math.random() * responses.default.length)];
+        const randomResponse = responses.default[Math.floor(Math.random() * responses.default.length)];
+        console.log('Selected response:', randomResponse);
+        return randomResponse;
     }
 
     // 初期化
