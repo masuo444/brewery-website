@@ -177,15 +177,16 @@
             </div>
             <div id="sakura-chat-container" style="display: none; position: fixed; bottom: 20px; right: 20px; width: 350px; height: 500px; background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 9999; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
                 <!-- ヘッダー -->
-                <div style="background: linear-gradient(135deg, #ff6b8a 0%, #ff8e8e 100%); color: white; padding: 15px; border-radius: 15px 15px 0 0; display: flex; justify-content: space-between; align-items: center;">
+                <div style="background: linear-gradient(135deg, #E8B86D 0%, #F2D194 100%); color: #0B1426; padding: 15px; border-radius: 15px 15px 0 0; display: flex; justify-content: space-between; align-items: center;">
                     <div style="display: flex; align-items: center; gap: 10px;">
-                        <span style="font-size: 1.5em;">🌸</span>
+                        <img src="images/sakura.png" alt="AIサクラ" style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid white; object-fit: cover;" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+                        <span style="font-size: 1.5em; display: none;">🌸</span>
                         <div>
                             <div style="font-weight: bold; font-size: 1.1em;">AIサクラ</div>
-                            <div style="font-size: 0.8em; opacity: 0.9;">益々酒造 AI杜氏</div>
+                            <div style="font-size: 0.8em; opacity: 0.8;">益々酒造 AI杜氏</div>
                         </div>
                     </div>
-                    <button onclick="closeSakuraChat()" style="background: none; border: none; color: white; font-size: 1.5em; cursor: pointer; padding: 5px;">×</button>
+                    <button onclick="closeSakuraChat()" style="background: none; border: none; color: #0B1426; font-size: 1.5em; cursor: pointer; padding: 5px;">×</button>
                 </div>
                 
                 <!-- メッセージエリア -->
@@ -210,12 +211,7 @@
                 </div>
             </div>
             
-            <!-- モバイル用チャットボタン -->
-            <div id="sakura-chat-button" style="position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); z-index: 9997;">
-                <button onclick="openSakuraChat()" style="background: linear-gradient(135deg, #ff6b8a 0%, #ff8e8e 100%); color: white; border: none; padding: 12px 24px; border-radius: 25px; font-size: 0.9em; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(255, 107, 138, 0.4); transition: all 0.3s ease;">
-                    🌸 AIサクラに相談する
-                </button>
-            </div>
+            <!-- モバイル用チャットボタン - 削除（インラインボタンのみ使用） -->
         `;
 
         // モバイルスタイル
@@ -242,12 +238,10 @@
         console.log('Opening Sakura Chat');
         const container = document.getElementById('sakura-chat-container');
         const overlay = document.getElementById('sakura-chat-overlay');
-        const button = document.getElementById('sakura-chat-button');
         
-        if (container && overlay && button) {
+        if (container && overlay) {
             container.style.display = 'block';
             overlay.style.display = 'block';
-            button.style.display = 'none';
             chatOpen = true;
             
             // 初回オープン時にウェルカムメッセージを追加
@@ -270,12 +264,10 @@
         console.log('Closing Sakura Chat');
         const container = document.getElementById('sakura-chat-container');
         const overlay = document.getElementById('sakura-chat-overlay');
-        const button = document.getElementById('sakura-chat-button');
         
-        if (container && overlay && button) {
+        if (container && overlay) {
             container.style.display = 'none';
             overlay.style.display = 'none';
-            button.style.display = 'block';
             chatOpen = false;
         }
     };
