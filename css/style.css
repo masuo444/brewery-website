@@ -5045,3 +5045,129 @@ body {
     border-left: 8px solid var(--color-accent);
 }
 
+/* Mobile Sticky CTA Styles */
+.mobile-sticky-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--gradient-accent);
+    padding: 16px 20px;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    display: block;
+}
+
+.sticky-cta-btn {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    background: var(--color-primary);
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    border-radius: var(--border-radius);
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: var(--transition-normal);
+    font-family: var(--font-japanese);
+}
+
+.sticky-cta-btn:hover {
+    background: var(--color-secondary);
+    transform: translateY(-2px);
+}
+
+/* Floating Action Buttons */
+.floating-actions {
+    position: fixed;
+    bottom: 100px; /* Above mobile sticky CTA */
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 999;
+}
+
+.float-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: none;
+    background: var(--gradient-accent);
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: var(--shadow-large);
+    transition: var(--transition-normal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.float-btn:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: var(--shadow-luxury);
+}
+
+/* Body padding for mobile sticky CTA */
+body {
+    padding-bottom: 0;
+}
+
+/* Mobile responsive adjustments */
+@media screen and (max-width: 768px) {
+    /* Add padding to body to prevent content being hidden behind sticky CTA */
+    body {
+        padding-bottom: 80px;
+    }
+    
+    /* Adjust floating buttons position on mobile */
+    .floating-actions {
+        bottom: 90px; /* Just above the sticky CTA */
+        right: 15px;
+    }
+    
+    .float-btn {
+        width: 48px;
+        height: 48px;
+        font-size: 1.3rem;
+    }
+    
+    /* Hide mobile sticky CTA on larger screens */
+}
+
+@media screen and (min-width: 769px) {
+    .mobile-sticky-cta {
+        display: none;
+    }
+    
+    .floating-actions {
+        bottom: 30px;
+    }
+}
+
+/* Section padding adjustments for mobile */
+@media screen and (max-width: 768px) {
+    .ai-intro {
+        padding: 40px 0;
+    }
+    
+    .products {
+        padding: 40px 0;
+    }
+    
+    .awards-export {
+        padding: 40px 0;
+    }
+    
+    .container {
+        padding: 0 16px;
+    }
+    
+    /* Ensure proper spacing around sections */
+    section {
+        margin-bottom: 20px;
+    }
+}
+
