@@ -8,7 +8,17 @@ let currentFilters = {
     search: ''
 };
 let cart = [];
-let filteredProducts = [...sakeData];
+let filteredProducts = [];
+
+// Wait for sakeData to be available
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof sakeData !== 'undefined') {
+        filteredProducts = [...sakeData];
+    } else {
+        console.error('sakeData is not defined. Make sure data.js is loaded before script.js');
+        filteredProducts = [];
+    }
+});
 
 // DOM elements
 const languageSelect = document.getElementById('languageSelect');
@@ -175,7 +185,9 @@ function setupEventListeners() {
         qrScanner.style.display = 'flex';
         // Simulate QR scanning
         setTimeout(() => {
-            const randomProduct = sakeData[Math.floor(Math.random() * sakeData.length)];
+            const randomProduct = (typeof sakeData !== 'undefined' && sakeData.length > 0) 
+                ? sakeData[Math.floor(Math.random() * sakeData.length)]
+                : null;
             openProductModal(randomProduct);
             qrScanner.style.display = 'none';
         }, 3000);
@@ -375,7 +387,7 @@ async function updateLanguage() {
 }
 
 function filterAndRenderProducts() {
-    filteredProducts = sakeData.filter(product => {
+    filteredProducts = (typeof sakeData !== 'undefined' ? sakeData : []).filter(product => {
         // Search filter
         if (currentFilters.search) {
             const searchLower = currentFilters.search;
@@ -628,7 +640,7 @@ function openProductModal(product) {
 }
 
 function addToCart(productId) {
-    const product = sakeData.find(p => p.id === productId);
+    const product = (typeof sakeData !== 'undefined' ? sakeData : []).find(p => p.id === productId);
     if (!product || product.inStock === 0) return;
 
     const existingItem = cart.find(item => item.id === productId);
@@ -744,7 +756,9 @@ function generateAIResponse(userMessage) {
     // Japanese language responses
     if (currentLanguage === 'ja') {
         if (lowerMessage.includes('おすすめ') || lowerMessage.includes('推奨') || lowerMessage.includes('選んで')) {
-            const randomProduct = sakeData[Math.floor(Math.random() * sakeData.length)];
+            const randomProduct = (typeof sakeData !== 'undefined' && sakeData.length > 0) 
+                ? sakeData[Math.floor(Math.random() * sakeData.length)]
+                : null;
             return `${randomProduct.name.ja || randomProduct.name.en}をおすすめします。${randomProduct.brewery.ja || randomProduct.brewery.en}の${randomProduct.type.ja || randomProduct.type.en}で、${randomProduct.tastingNotes.ja || randomProduct.tastingNotes.en}という特徴があります。こだわりの逸品です！`;
         }
         
@@ -803,7 +817,7 @@ function generateAIResponse(userMessage) {
 }
 
 function generateQR(productId) {
-    const product = sakeData.find(p => p.id === productId);
+    const product = (typeof sakeData !== 'undefined' ? sakeData : []).find(p => p.id === productId);
     if (!product) return;
 
     // Simulate QR code generation
