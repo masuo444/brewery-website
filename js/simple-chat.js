@@ -170,53 +170,68 @@
         ]
     };
 
-    // チャットUIを作成 - 洗練された桜風デザイン
+    // チャットUIを作成 - 桜風プレミアムデザイン
     function createChatUI() {
         const chatHTML = `
-            <div id="sakura-chat-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(45deg, rgba(255, 182, 193, 0.2) 0%, rgba(255, 228, 225, 0.3) 100%); backdrop-filter: blur(8px); z-index: 9998;">
+            <div id="sakura-chat-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 30% 20%, rgba(255, 182, 193, 0.15) 0%, rgba(255, 228, 225, 0.2) 40%, rgba(252, 228, 236, 0.25) 100%); backdrop-filter: blur(12px); z-index: 9998;">
             </div>
-            <div id="sakura-chat-container" style="display: none; position: fixed; bottom: 20px; right: 20px; width: 380px; height: 550px; background: linear-gradient(145deg, #FFFFFF 0%, #FFF8F8 100%); border-radius: 25px; box-shadow: 0 20px 60px rgba(255, 105, 180, 0.3), 0 8px 32px rgba(255, 182, 193, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.8); z-index: 9999; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border: 2px solid rgba(255, 192, 203, 0.3); overflow: hidden;">
-                <!-- 桜の花びらアニメーション -->
-                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden;">
-                    <div style="position: absolute; top: 10%; left: 5%; font-size: 1.2em; color: rgba(255, 182, 193, 0.4); animation: sakuraFloat1 8s infinite;">🌸</div>
-                    <div style="position: absolute; top: 30%; right: 8%; font-size: 0.8em; color: rgba(255, 192, 203, 0.5); animation: sakuraFloat2 10s infinite;">🌸</div>
-                    <div style="position: absolute; bottom: 20%; left: 10%; font-size: 1em; color: rgba(255, 182, 193, 0.3); animation: sakuraFloat3 12s infinite;">🌸</div>
+            <div id="sakura-chat-container" style="display: none; position: fixed; bottom: 20px; right: 20px; width: 400px; height: 580px; background: linear-gradient(145deg, #FFF8F8 0%, #FFE4E1 30%, #FFEEF0 100%); border-radius: 28px; box-shadow: 0 25px 80px rgba(255, 105, 180, 0.4), 0 15px 50px rgba(255, 182, 193, 0.3), inset 0 2px 0 rgba(255, 255, 255, 0.9); z-index: 9999; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; border: 3px solid rgba(255, 192, 203, 0.4); overflow: hidden; position: relative;">
+                <!-- 桜の花びら背景パターン -->
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden; opacity: 0.6;">
+                    <div style="position: absolute; top: 5%; left: 3%; font-size: 1.4em; color: rgba(255, 182, 193, 0.3); animation: sakuraFloat1 12s infinite;">🌸</div>
+                    <div style="position: absolute; top: 25%; right: 5%; font-size: 1em; color: rgba(255, 192, 203, 0.4); animation: sakuraFloat2 15s infinite;">🌸</div>
+                    <div style="position: absolute; bottom: 30%; left: 8%; font-size: 1.2em; color: rgba(255, 182, 193, 0.2); animation: sakuraFloat3 18s infinite;">🌸</div>
+                    <div style="position: absolute; top: 45%; right: 12%; font-size: 0.9em; color: rgba(255, 210, 220, 0.5); animation: sakuraFloat1 20s infinite reverse;">🌸</div>
+                    <div style="position: absolute; bottom: 15%; right: 25%; font-size: 1.1em; color: rgba(255, 192, 203, 0.3); animation: sakuraFloat2 14s infinite;">🌸</div>
                 </div>
                 
-                <!-- ヘッダー -->
-                <div style="background: linear-gradient(135deg, #FFB6C1 0%, #FFC0CB 50%, #FFCCCB 100%); color: #4A1A3A; padding: 20px; border-radius: 25px 25px 0 0; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 16px rgba(255, 105, 180, 0.2); position: relative;">
-                    <div style="display: flex; align-items: center; gap: 12px;">
+                <!-- 上部桜模様デコレーション -->
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 8px; background: linear-gradient(90deg, #FFB6C1 0%, #FFC0CB 25%, #FFCCCB 50%, #FFC0CB 75%, #FFB6C1 100%); opacity: 0.8;"></div>
+                
+                <!-- プレミアムヘッダー -->
+                <div style="background: linear-gradient(135deg, #FFB6C1 0%, #FFC0CB 30%, #FFCCCB 70%, #FFE4E1 100%); color: #4A1A3A; padding: 24px; border-radius: 28px 28px 0 0; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 6px 20px rgba(255, 105, 180, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.8); position: relative; border-bottom: 1px solid rgba(255, 255, 255, 0.6);">
+                    <div style="display: flex; align-items: center; gap: 16px;">
                         <div style="position: relative;">
-                            <img src="images/sakura.png" alt="AIサクラ" style="width: 48px; height: 48px; border-radius: 50%; border: 3px solid rgba(255, 255, 255, 0.9); object-fit: cover; box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div style="display: none; width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #FF69B4, #FFB6C1); align-items: center; justify-content: center; font-size: 1.8em; border: 3px solid white; box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);">🌸</div>
-                            <div style="position: absolute; bottom: -2px; right: -2px; width: 16px; height: 16px; background: #00FF7F; border-radius: 50%; border: 2px solid white;"></div>
+                            <img src="images/sakura.png" alt="AIサクラ" style="width: 52px; height: 52px; border-radius: 50%; border: 4px solid rgba(255, 255, 255, 0.95); object-fit: cover; box-shadow: 0 6px 16px rgba(255, 105, 180, 0.4), 0 2px 8px rgba(255, 182, 193, 0.3);" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div style="display: none; width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, #FF69B4, #FFB6C1); align-items: center; justify-content: center; font-size: 2em; border: 4px solid white; box-shadow: 0 6px 16px rgba(255, 105, 180, 0.4);">🌸</div>
+                            <div style="position: absolute; bottom: 0; right: 0; width: 18px; height: 18px; background: linear-gradient(135deg, #00FF7F, #32CD32); border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 6px rgba(0, 255, 127, 0.4);"></div>
+                            <div style="position: absolute; top: -2px; right: -2px; font-size: 0.8em; animation: sparkle 2.5s infinite;">✨</div>
                         </div>
                         <div>
-                            <div style="font-weight: 700; font-size: 1.2em; color: #4A1A3A;">AIサクラ</div>
-                            <div style="font-size: 0.85em; opacity: 0.8; color: #8B4F77;">益々酒造 AIアシスタント 🌸</div>
+                            <div style="font-weight: 800; font-size: 1.3em; color: #4A1A3A; text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);">AIサクラ</div>
+                            <div style="font-size: 0.9em; opacity: 0.85; color: #8B4F77; font-weight: 600;">益々酒造 AIアシスタント 🌸</div>
+                            <div style="font-size: 0.75em; color: #D8527A; margin-top: 2px;">オンライン・即座に対応</div>
                         </div>
                     </div>
-                    <button onclick="closeSakuraChat()" style="background: rgba(255, 255, 255, 0.2); border: none; color: #4A1A3A; font-size: 1.4em; cursor: pointer; padding: 8px; border-radius: 50%; width: 36px; height: 36px; transition: all 0.2s ease; display: flex; align-items: center; justify-content: center;" onmouseover="this.style.background='rgba(255,255,255,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'">×</button>
+                    <button onclick="closeSakuraChat()" style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1)); border: 2px solid rgba(255, 255, 255, 0.4); color: #4A1A3A; font-size: 1.5em; cursor: pointer; padding: 10px; border-radius: 50%; width: 42px; height: 42px; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(255, 105, 180, 0.2);" onmouseover="this.style.background='linear-gradient(135deg, rgba(255,255,255,0.5), rgba(255,255,255,0.2))'; this.style.transform='scale(1.1)'" onmouseout="this.style.background='linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,255,255,0.1))'; this.style.transform='scale(1)'">×</button>
                 </div>
                 
-                <!-- メッセージエリア -->
-                <div id="sakura-messages" style="height: 380px; overflow-y: auto; padding: 20px; background: linear-gradient(180deg, #FEFEFE 0%, #FFF8F8 100%); position: relative;">
-                    <!-- Initial messages will be added by JavaScript -->
+                <!-- プレミアムメッセージエリア -->
+                <div id="sakura-messages" style="height: 400px; overflow-y: auto; padding: 24px 20px; background: linear-gradient(180deg, rgba(255, 248, 248, 0.95) 0%, rgba(255, 240, 245, 0.9) 50%, rgba(254, 254, 254, 0.95) 100%); position: relative; scroll-behavior: smooth;">
+                    <!-- 背景桜模様 -->
+                    <div style="position: absolute; top: 20px; right: 15px; font-size: 3em; color: rgba(255, 182, 193, 0.08); pointer-events: none; transform: rotate(15deg);">🌸</div>
+                    <div style="position: absolute; bottom: 30px; left: 10px; font-size: 2.5em; color: rgba(255, 192, 203, 0.06); pointer-events: none; transform: rotate(-10deg);">🌸</div>
+                    <!-- Messages will be added here -->
                 </div>
                 
-                <!-- クイック返信ボタン -->
-                <div style="padding: 12px 20px; background: linear-gradient(135deg, #FFF0F5 0%, #FFE4E1 100%); display: flex; gap: 8px; flex-wrap: wrap; border-top: 1px solid rgba(255, 182, 193, 0.2);">
-                    <button onclick="sendQuickMessage('おすすめの日本酒は？')" style="background: linear-gradient(135deg, #FFE4E1, #FFF0F5); border: 1px solid #FFB6C1; border-radius: 18px; padding: 6px 12px; font-size: 0.75em; cursor: pointer; color: #8B4F77; font-weight: 600; transition: all 0.2s ease; box-shadow: 0 2px 4px rgba(255, 182, 193, 0.2);" onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 4px 8px rgba(255, 182, 193, 0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(255, 182, 193, 0.2)'">🌸 おすすめ</button>
-                    <button onclick="sendQuickMessage('料理との相性は？')" style="background: linear-gradient(135deg, #FFE4E1, #FFF0F5); border: 1px solid #FFB6C1; border-radius: 18px; padding: 6px 12px; font-size: 0.75em; cursor: pointer; color: #8B4F77; font-weight: 600; transition: all 0.2s ease; box-shadow: 0 2px 4px rgba(255, 182, 193, 0.2);" onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 4px 8px rgba(255, 182, 193, 0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(255, 182, 193, 0.2)'">🍽️ ペアリング</button>
-                    <button onclick="sendQuickMessage('飲み方を教えて')" style="background: linear-gradient(135deg, #FFE4E1, #FFF0F5); border: 1px solid #FFB6C1; border-radius: 18px; padding: 6px 12px; font-size: 0.75em; cursor: pointer; color: #8B4F77; font-weight: 600; transition: all 0.2s ease; box-shadow: 0 2px 4px rgba(255, 182, 193, 0.2);" onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 4px 8px rgba(255, 182, 193, 0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(255, 182, 193, 0.2)'">🍶 飲み方</button>
-                    <button onclick="sendQuickMessage('見学できますか？')" style="background: linear-gradient(135deg, #FFE4E1, #FFF0F5); border: 1px solid #FFB6C1; border-radius: 18px; padding: 6px 12px; font-size: 0.75em; cursor: pointer; color: #8B4F77; font-weight: 600; transition: all 0.2s ease; box-shadow: 0 2px 4px rgba(255, 182, 193, 0.2);" onmouseover="this.style.transform='translateY(-1px)'; this.style.boxShadow='0 4px 8px rgba(255, 182, 193, 0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 4px rgba(255, 182, 193, 0.2)'">🏠 見学</button>
+                <!-- 立体感のあるクイック返信ボタン -->
+                <div style="padding: 16px 20px; background: linear-gradient(135deg, #FFF0F5 0%, #FFE4E1 50%, #FFEEF0 100%); display: flex; gap: 10px; flex-wrap: wrap; border-top: 2px solid rgba(255, 182, 193, 0.3); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);">
+                    <button onclick="sendQuickMessage('おすすめの日本酒は？')" style="background: linear-gradient(145deg, #FFE4E1 0%, #FFF0F5 50%, #FFE4E1 100%); border: 2px solid #FFB6C1; border-radius: 22px; padding: 10px 16px; font-size: 0.8em; cursor: pointer; color: #8B4F77; font-weight: 700; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 8px rgba(255, 182, 193, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.8); position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-3px) scale(1.05)'; this.style.boxShadow='0 8px 16px rgba(255, 182, 193, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.9)'; this.style.borderColor='#FF69B4'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 4px 8px rgba(255, 182, 193, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.8)'; this.style.borderColor='#FFB6C1'">🌸 おすすめ</button>
+                    <button onclick="sendQuickMessage('料理との相性は？')" style="background: linear-gradient(145deg, #FFE4E1 0%, #FFF0F5 50%, #FFE4E1 100%); border: 2px solid #FFB6C1; border-radius: 22px; padding: 10px 16px; font-size: 0.8em; cursor: pointer; color: #8B4F77; font-weight: 700; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 8px rgba(255, 182, 193, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.8);" onmouseover="this.style.transform='translateY(-3px) scale(1.05)'; this.style.boxShadow='0 8px 16px rgba(255, 182, 193, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.9)'; this.style.borderColor='#FF69B4'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 4px 8px rgba(255, 182, 193, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.8)'; this.style.borderColor='#FFB6C1'">🍽️ ペアリング</button>
+                    <button onclick="sendQuickMessage('飲み方を教えて')" style="background: linear-gradient(145deg, #FFE4E1 0%, #FFF0F5 50%, #FFE4E1 100%); border: 2px solid #FFB6C1; border-radius: 22px; padding: 10px 16px; font-size: 0.8em; cursor: pointer; color: #8B4F77; font-weight: 700; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 8px rgba(255, 182, 193, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.8);" onmouseover="this.style.transform='translateY(-3px) scale(1.05)'; this.style.boxShadow='0 8px 16px rgba(255, 182, 193, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.9)'; this.style.borderColor='#FF69B4'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 4px 8px rgba(255, 182, 193, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.8)'; this.style.borderColor='#FFB6C1'">🍶 飲み方</button>
+                    <button onclick="sendQuickMessage('見学できますか？')" style="background: linear-gradient(145deg, #FFE4E1 0%, #FFF0F5 50%, #FFE4E1 100%); border: 2px solid #FFB6C1; border-radius: 22px; padding: 10px 16px; font-size: 0.8em; cursor: pointer; color: #8B4F77; font-weight: 700; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 8px rgba(255, 182, 193, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.8);" onmouseover="this.style.transform='translateY(-3px) scale(1.05)'; this.style.boxShadow='0 8px 16px rgba(255, 182, 193, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.9)'; this.style.borderColor='#FF69B4'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 4px 8px rgba(255, 182, 193, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.8)'; this.style.borderColor='#FFB6C1'">🏠 見学</button>
                 </div>
                 
-                <!-- 入力エリア -->
-                <div style="padding: 16px 20px; display: flex; gap: 10px; background: linear-gradient(135deg, #FFF8F8 0%, #FEFEFE 100%); border-top: 1px solid rgba(255, 182, 193, 0.2);">
-                    <input type="text" id="sakura-input" placeholder="メッセージを入力... 🌸" style="flex: 1; padding: 14px 18px; border: 2px solid #FFB6C1; border-radius: 25px; outline: none; font-size: 0.9em; background: linear-gradient(135deg, #FFFFFF 0%, #FFF8F8 100%); color: #4A1A3A; box-shadow: inset 0 2px 4px rgba(255, 182, 193, 0.1); transition: all 0.2s ease;" onkeypress="handleEnterKey(event)" onfocus="this.style.borderColor='#FF69B4'; this.style.boxShadow='inset 0 2px 4px rgba(255, 182, 193, 0.2), 0 0 0 3px rgba(255, 105, 180, 0.1)'" onblur="this.style.borderColor='#FFB6C1'; this.style.boxShadow='inset 0 2px 4px rgba(255, 182, 193, 0.1)'">
-                    <button onclick="sendMessage()" style="background: linear-gradient(135deg, #FF69B4 0%, #FF1493 50%, #FF69B4 100%); color: white; border: none; border-radius: 50%; width: 46px; height: 46px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(255, 105, 180, 0.4); transition: all 0.2s ease; font-size: 1.2em;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 16px rgba(255, 105, 180, 0.5)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 12px rgba(255, 105, 180, 0.4)'">
-                        ✨
+                <!-- プレミアム入力エリア -->
+                <div style="padding: 20px; display: flex; gap: 12px; background: linear-gradient(135deg, #FFF8F8 0%, #FFE4E1 50%, #FEFEFE 100%); border-top: 3px solid rgba(255, 182, 193, 0.4); box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.9), 0 -8px 16px rgba(255, 105, 180, 0.1); position: relative;">
+                    <!-- 入力欄装飾 -->
+                    <div style="position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 40px; height: 4px; background: linear-gradient(90deg, #FFB6C1, #FFC0CB); border-radius: 2px; opacity: 0.6;"></div>
+                    
+                    <input type="text" id="sakura-input" placeholder="✨ メッセージを入力してください... 🌸" style="flex: 1; padding: 16px 20px; border: 3px solid #FFB6C1; border-radius: 28px; outline: none; font-size: 1em; background: linear-gradient(135deg, #FFFFFF 0%, #FFFAFA 100%); color: #4A1A3A; box-shadow: inset 0 3px 6px rgba(255, 182, 193, 0.15), 0 2px 8px rgba(255, 105, 180, 0.1); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); font-weight: 500;" onkeypress="handleEnterKey(event)" onfocus="this.style.borderColor='#FF69B4'; this.style.boxShadow='inset 0 3px 6px rgba(255, 182, 193, 0.2), 0 0 0 4px rgba(255, 105, 180, 0.15), 0 4px 12px rgba(255, 105, 180, 0.2)'; this.style.transform='translateY(-1px)'" onblur="this.style.borderColor='#FFB6C1'; this.style.boxShadow='inset 0 3px 6px rgba(255, 182, 193, 0.15), 0 2px 8px rgba(255, 105, 180, 0.1)'; this.style.transform='translateY(0)'">
+                    
+                    <button onclick="sendMessage()" style="background: linear-gradient(135deg, #FF69B4 0%, #FF1493 40%, #FF69B4 100%); color: white; border: none; border-radius: 50%; width: 52px; height: 52px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 16px rgba(255, 105, 180, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); font-size: 1.4em; position: relative; overflow: hidden;" onmouseover="this.style.transform='scale(1.1) translateY(-2px)'; this.style.boxShadow='0 10px 24px rgba(255, 105, 180, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.4)'" onmouseout="this.style.transform='scale(1) translateY(0)'; this.style.boxShadow='0 6px 16px rgba(255, 105, 180, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3)'">
+                        <span style="position: relative; z-index: 1;">🚀</span>
+                        <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.2) 50%, transparent 70%); animation: shimmer 2s infinite;"></div>
                     </button>
                 </div>
             </div>
@@ -224,7 +239,7 @@
             </div>
         `;
         
-        // 桜のアニメーションCSSを追加
+        // プレミアム桜アニメーションCSSを追加
         const sakuraAnimationCSS = `
             <style>
             @keyframes sakuraFloat1 {
@@ -247,28 +262,69 @@
             }
             @keyframes sparkle {
                 0%, 100% { opacity: 0.3; transform: scale(1) rotate(0deg); }
-                50% { opacity: 0.8; transform: scale(1.2) rotate(180deg); }
+                25% { opacity: 0.6; transform: scale(1.1) rotate(90deg); }
+                50% { opacity: 0.9; transform: scale(1.3) rotate(180deg); }
+                75% { opacity: 0.7; transform: scale(1.15) rotate(270deg); }
+            }
+            @keyframes shimmer {
+                0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+                100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
             }
             </style>
         `;
 
-        // モバイルスタイル - 桜風デザイン対応
+        // モバイルスタイル - 桜風デザイン対応（キーボード対応強化）
         const mobileStyle = `
             <style>
+            @keyframes messageSlideIn {
+                0% { opacity: 0; transform: translateY(15px) scale(0.95); }
+                100% { opacity: 1; transform: translateY(0) scale(1); }
+            }
+            
             @media (max-width: 768px) {
                 #sakura-chat-container {
                     width: 95% !important;
-                    max-width: 400px !important;
-                    height: 85% !important;
-                    max-height: 600px !important;
-                    bottom: 90px !important;
+                    max-width: 420px !important;
+                    height: min(85vh, 650px) !important;
+                    bottom: 80px !important;
                     right: 50% !important;
                     transform: translateX(50%) !important;
                     border-radius: 25px !important;
                     box-shadow: 0 15px 50px rgba(255, 105, 180, 0.4), 0 8px 32px rgba(255, 182, 193, 0.3) !important;
                 }
                 #sakura-messages {
-                    height: calc(100% - 200px) !important;
+                    height: calc(100% - 220px) !important;
+                    padding-bottom: 20px !important;
+                }
+                
+                /* モバイルキーボード表示時の調整 */
+                @media (max-height: 500px) {
+                    #sakura-chat-container {
+                        height: 90vh !important;
+                        bottom: 10px !important;
+                    }
+                    #sakura-messages {
+                        height: calc(100% - 200px) !important;
+                    }
+                }
+                
+                /* 小さな画面での最適化 */
+                @media (max-width: 480px) {
+                    #sakura-chat-container {
+                        width: 98% !important;
+                        height: min(90vh, 700px) !important;
+                        border-radius: 20px !important;
+                    }
+                }
+                
+                /* フォントサイズをモバイル向けに調整 */
+                #sakura-messages div[style*="font-size: 1.05em"] {
+                    font-size: 1.15em !important;
+                    line-height: 1.8 !important;
+                }
+                #sakura-messages div[style*="font-size: 1.1em"] {
+                    font-size: 1.2em !important;
+                    line-height: 1.7 !important;
                 }
             }
             </style>
@@ -279,7 +335,7 @@
         document.body.insertAdjacentHTML('beforeend', chatHTML);
     }
 
-    // チャット開く
+    // チャット開く（モバイルキーボード対応強化）
     window.openSakuraChat = function() {
         console.log('Opening Sakura Chat');
         const container = document.getElementById('sakura-chat-container');
@@ -297,15 +353,40 @@
                 addAIMessage(welcomeMessage);
             }
             
-            // 入力フィールドにフォーカス
+            // モバイルビューポート調整とキーボード対応
+            if (window.innerWidth <= 768) {
+                document.body.style.overflow = 'hidden';
+                
+                // iOSサファリのビューポート問題対応
+                if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
+                    const viewport = document.querySelector('meta[name=viewport]');
+                    if (viewport) {
+                        viewport.content = 'width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no';
+                    }
+                }
+            }
+            
+            // 入力フィールドにフォーカス（遅延でキーボード対応）
             setTimeout(() => {
                 const input = document.getElementById('sakura-input');
-                if (input) input.focus();
-            }, 100);
+                if (input) {
+                    input.focus();
+                    
+                    // キーボード表示時のスクロール調整
+                    input.addEventListener('focus', () => {
+                        setTimeout(() => {
+                            const messagesDiv = document.getElementById('sakura-messages');
+                            if (messagesDiv) {
+                                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                            }
+                        }, 300);
+                    });
+                }
+            }, 200);
         }
     };
 
-    // チャット閉じる
+    // チャット閉じる（モバイル対応強化）
     window.closeSakuraChat = function() {
         console.log('Closing Sakura Chat');
         const container = document.getElementById('sakura-chat-container');
@@ -315,6 +396,19 @@
             container.style.display = 'none';
             overlay.style.display = 'none';
             chatOpen = false;
+            
+            // モバイル時のスクロール復元
+            if (window.innerWidth <= 768) {
+                document.body.style.overflow = '';
+                
+                // iOSサファリのビューポート復元
+                if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
+                    const viewport = document.querySelector('meta[name=viewport]');
+                    if (viewport) {
+                        viewport.content = 'width=device-width, initial-scale=1.0';
+                    }
+                }
+            }
         }
     };
 
@@ -350,38 +444,51 @@
         }
     };
 
-    // ユーザーメッセージ追加 - 桜風デザイン
+    // ユーザーメッセージ追加 - 桜風プレミアムデザイン（視認性向上）
     function addUserMessage(message) {
         const messagesDiv = document.getElementById('sakura-messages');
         const messageHTML = `
-            <div style="display: flex; justify-content: flex-end; margin-bottom: 16px;">
-                <div style="background: linear-gradient(135deg, #FF69B4 0%, #FF1493 50%, #FF69B4 100%); color: white; padding: 14px 18px; border-radius: 25px 25px 8px 25px; max-width: 75%; box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2); position: relative;">
-                    <div style="font-size: 0.9em; line-height: 1.4; font-weight: 500; text-shadow: 0 1px 2px rgba(0,0,0,0.1);">${message}</div>
-                    <div style="position: absolute; bottom: -2px; right: 8px; font-size: 0.7em; opacity: 0.8;">You</div>
+            <div style="display: flex; justify-content: flex-end; margin-bottom: 24px; animation: messageSlideIn 0.4s ease-out;">
+                <div style="background: linear-gradient(135deg, #FF69B4 0%, #FF1493 50%, #FF69B4 100%); color: white; padding: 18px 22px; border-radius: 25px 25px 8px 25px; max-width: 80%; box-shadow: 0 6px 16px rgba(255, 105, 180, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3); position: relative; backdrop-filter: blur(8px);">
+                    <div style="font-size: 1.1em; line-height: 1.6; font-weight: 600; text-shadow: 0 1px 3px rgba(0,0,0,0.15); letter-spacing: 0.3px;">${message}</div>
+                    <div style="position: absolute; bottom: -2px; right: 10px; font-size: 0.75em; opacity: 0.9; font-weight: 500;">You</div>
                 </div>
             </div>
         `;
         messagesDiv.insertAdjacentHTML('beforeend', messageHTML);
         messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        
+        // モバイルキーボード対応：メッセージ送信後にスクロール調整
+        setTimeout(() => {
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }, 100);
     }
 
-    // AI応答追加 - 桜風デザイン
+    // AI応答追加 - 桜風プレミアムデザイン（視認性大幅向上）
     function addAIMessage(message) {
         const messagesDiv = document.getElementById('sakura-messages');
         const messageHTML = `
-            <div style="display: flex; justify-content: flex-start; margin-bottom: 20px;">
-                <div style="display: flex; align-items: flex-start; gap: 12px; max-width: 85%;">
-                    <div style="width: 32px; height: 32px; background: linear-gradient(135deg, #FFB6C1, #FFC0CB); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1em; border: 2px solid white; box-shadow: 0 2px 8px rgba(255, 182, 193, 0.4); flex-shrink: 0;">🌸</div>
-                    <div style="background: linear-gradient(135deg, #FFFFFF 0%, #FFF8F8 100%); color: #4A1A3A; padding: 16px 20px; border-radius: 8px 25px 25px 25px; box-shadow: 0 4px 16px rgba(255, 182, 193, 0.2), 0 2px 8px rgba(255, 105, 180, 0.1); border: 1px solid rgba(255, 192, 203, 0.3); position: relative;">
-                        <div style="font-size: 0.9em; line-height: 1.5; white-space: pre-line;">${message}</div>
-                        <div style="position: absolute; bottom: 4px; right: 12px; font-size: 0.7em; color: #FF69B4; font-weight: 600; opacity: 0.8;">AIサクラ</div>
-                        <div style="position: absolute; top: -4px; left: -4px; font-size: 0.8em; opacity: 0.3; animation: sparkle 2s infinite;">✨</div>
+            <div style="display: flex; justify-content: flex-start; margin-bottom: 28px; animation: messageSlideIn 0.5s ease-out;">
+                <div style="display: flex; align-items: flex-start; gap: 16px; max-width: 90%;">
+                    <div style="width: 38px; height: 38px; background: linear-gradient(135deg, #FFB6C1, #FFC0CB); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2em; border: 3px solid white; box-shadow: 0 4px 12px rgba(255, 182, 193, 0.5), 0 2px 6px rgba(255, 105, 180, 0.3); flex-shrink: 0; position: relative;">
+                        🌸
+                        <div style="position: absolute; top: -2px; right: -2px; font-size: 0.6em; animation: sparkle 2.5s infinite;">✨</div>
+                    </div>
+                    <div style="background: linear-gradient(135deg, #FFFFFF 0%, #FFF8F8 50%, #FFFAFA 100%); color: #2A1810; padding: 20px 24px; border-radius: 12px 28px 28px 28px; box-shadow: 0 6px 20px rgba(255, 182, 193, 0.25), 0 3px 12px rgba(255, 105, 180, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.8); border: 2px solid rgba(255, 192, 203, 0.4); position: relative; backdrop-filter: blur(4px);">
+                        <div style="font-size: 1.05em; line-height: 1.7; white-space: pre-line; font-weight: 500; letter-spacing: 0.2px; color: #3A1A2A;">${message}</div>
+                        <div style="position: absolute; bottom: 6px; right: 16px; font-size: 0.75em; color: #FF69B4; font-weight: 700; opacity: 0.9; text-shadow: 0 1px 2px rgba(255,255,255,0.8);">AIサクラ</div>
+                        <div style="position: absolute; top: -6px; left: -6px; font-size: 0.9em; opacity: 0.4; animation: sparkle 3s infinite;">✨</div>
                     </div>
                 </div>
             </div>
         `;
         messagesDiv.insertAdjacentHTML('beforeend', messageHTML);
         messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        
+        // モバイルキーボード対応：AI応答後のスクロール調整
+        setTimeout(() => {
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }, 100);
     }
 
     // 応答生成
