@@ -11,7 +11,119 @@
         isInitialized: false
     };
 
-    // 益々酒造完全商品データベース
+    // 日本酒基礎知識データベース
+    const sakeKnowledge = {
+        types: {
+            "純米酒": {
+                description: "米と米麹のみで造られた日本酒。醸造アルコールを一切使用しない",
+                characteristics: "米本来の旨みと深いコク",
+                alcohol: "15-16%程度",
+                serving: "冷酒から熱燗まで幅広く"
+            },
+            "純米吟醸": {
+                description: "純米酒で精米歩合60%以下。低温でじっくり発酵",
+                characteristics: "華やかな香りとすっきりした味わい",
+                alcohol: "15-16%程度", 
+                serving: "冷酒がおすすめ"
+            },
+            "純米大吟醸": {
+                description: "純米酒で精米歩合50%以下。最高級の純米酒",
+                characteristics: "極めて華やかな香りと上品な味わい",
+                alcohol: "15-16%程度",
+                serving: "よく冷やして"
+            },
+            "本醸造": {
+                description: "精米歩合70%以下、醸造アルコール添加",
+                characteristics: "すっきりとした淡麗な味わい",
+                alcohol: "15-16%程度",
+                serving: "冷酒から熱燗まで"
+            },
+            "吟醸": {
+                description: "精米歩合60%以下、醸造アルコール添加、吟醸造り",
+                characteristics: "華やかな香りと軽快な味わい",
+                alcohol: "15-16%程度",
+                serving: "冷酒がおすすめ"
+            },
+            "大吟醸": {
+                description: "精米歩合50%以下、醸造アルコール添加、最高級",
+                characteristics: "最も華やかな香りと繊細な味わい",
+                alcohol: "15-16%程度",
+                serving: "よく冷やして"
+            }
+        },
+        brewing: {
+            "精米": "玄米の表面を削って白米にする工程。削る割合が精米歩合",
+            "洗米・浸漬": "白米を洗い、水に浸して吸水させる",
+            "蒸米": "米を蒸して酒造りに適した状態にする",
+            "麹作り": "蒸米に麹菌を付けて麹を作る。日本酒造りの要",
+            "酒母作り": "麹、蒸米、水に酵母を加えて酒母を作る",
+            "仕込み": "酒母に麹、蒸米、水を3回に分けて加える三段仕込み",
+            "発酵": "約20-30日間発酵させてもろみを作る",
+            "搾り": "もろみを搾って日本酒と酒粕に分ける",
+            "濾過・火入れ": "不純物を取り除き、殺菌する",
+            "貯蔵・熟成": "タンクで熟成させて味を整える"
+        },
+        serving: {
+            "冷酒": {
+                temperature: "5-10℃",
+                suitable: "吟醸酒、純米吟醸、大吟醸",
+                effect: "香りが立ち、すっきりとした味わい"
+            },
+            "冷や": {
+                temperature: "常温（20℃前後）",
+                suitable: "純米酒、本醸造",
+                effect: "日本酒本来の味わいを楽しめる"
+            },
+            "ぬる燗": {
+                temperature: "40-45℃",
+                suitable: "純米酒、本醸造、古酒",
+                effect: "香りが穏やかに立ち、まろやかな味わい"
+            },
+            "熱燗": {
+                temperature: "50-55℃",
+                suitable: "本醸造、普通酒",
+                effect: "キレが良くなり、体も温まる"
+            },
+            "飛び切り燗": {
+                temperature: "55℃以上",
+                suitable: "濃厚な日本酒",
+                effect: "強い香りとシャープな味わい"
+            }
+        },
+        terms: {
+            "辛口": "糖分が少なく、すっきりとした味わい",
+            "甘口": "糖分が多く、まろやかで甘い味わい", 
+            "淡麗": "軽やかですっきりとした味わい",
+            "濃醇": "コクがあり、重厚な味わい",
+            "精米歩合": "玄米を削った後に残る白米の割合。数字が小さいほど高級",
+            "日本酒度": "糖分の多少を表す数値。プラスが辛口、マイナスが甘口",
+            "酸度": "酸の量を表す数値。高いとキレがよく、低いと穏やか",
+            "アミノ酸度": "旨み成分の量。適度だと旨みがあり、多すぎると雑味",
+            "生酒": "火入れ（加熱殺菌）をしていない日本酒",
+            "原酒": "水で割らずにそのままの日本酒",
+            "にごり酒": "もろみを粗く濾した白濁した日本酒",
+            "古酒": "3年以上熟成させた日本酒"
+        },
+        regions: {
+            "新潟": "淡麗辛口の代表格。キレの良い酒質",
+            "兵庫": "山田錦の産地。上品で繊細な酒質", 
+            "京都": "伏見の軟水で造る、やわらかな酒質",
+            "広島": "軟水仕込みの穏やかで上品な酒質",
+            "秋田": "美山錦使用の香り高い酒質",
+            "山形": "出羽燦々使用の華やかな酒質",
+            "福島": "多様な酒米による個性豊かな酒質"
+        },
+        rice: {
+            "山田錦": "酒米の王様。兵庫県が主産地。大粒で心白が大きい",
+            "五百万石": "新潟県の代表的酒米。淡麗な酒質を生む",
+            "美山錦": "長野県生まれ。冷涼地向けの酒米",
+            "出羽燦々": "山形県の酒米。香り高い酒を造る",
+            "雄町": "岡山県の古い品種。濃醇な味わい",
+            "愛山": "兵庫県の酒米。甘みのある酒質"
+        }
+    };
+
+    // 益々酒造完全商品データベース  
     const masumasuData = {
         company: {
             name: "株式会社益々酒造",
@@ -137,10 +249,117 @@
         ]
     };
 
+    // API設定
+    const API_CONFIG = {
+        openai: {
+            // 実際のAPIキーは環境変数から取得
+            apiKey: 'sk-demo-key', // デモ用（実装時は環境変数から）
+            endpoint: 'https://api.openai.com/v1/chat/completions'
+        },
+        deepl: {
+            apiKey: 'demo-key', // デモ用（実装時は環境変数から）
+            endpoint: 'https://api-free.deepl.com/v2/translate'
+        }
+    };
+
+    // GPT APIを使用したAI応答（デモ版）
+    async function getGPTResponse(userMessage) {
+        try {
+            // 実際のAPIキーがある場合のみAPI呼び出し
+            if (API_CONFIG.openai.apiKey.startsWith('sk-') && API_CONFIG.openai.apiKey !== 'sk-demo-key') {
+                const response = await fetch(API_CONFIG.openai.endpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${API_CONFIG.openai.apiKey}`
+                    },
+                    body: JSON.stringify({
+                        model: "gpt-3.5-turbo",
+                        messages: [
+                            {
+                                role: "system",
+                                content: "あなたは益々酒造のAIアシスタント「AIサクラ」です。日本酒の専門知識を持ち、親しみやすく丁寧に対応します。"
+                            },
+                            {
+                                role: "user", 
+                                content: userMessage
+                            }
+                        ],
+                        max_tokens: 500,
+                        temperature: 0.7
+                    })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    return `🤖 GPT応答: ${data.choices[0].message.content}`;
+                }
+            }
+        } catch (error) {
+            console.log('GPT API demo mode - using local knowledge base');
+        }
+        
+        // ローカル知識ベースにフォールバック
+        return generateLocalResponse(userMessage);
+    }
+
+    // DeepL翻訳機能（デモ版）
+    async function translateText(text, targetLang = 'EN') {
+        try {
+            if (API_CONFIG.deepl.apiKey !== 'demo-key') {
+                const response = await fetch(API_CONFIG.deepl.endpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'Authorization': `DeepL-Auth-Key ${API_CONFIG.deepl.apiKey}`
+                    },
+                    body: new URLSearchParams({
+                        'text': text,
+                        'target_lang': targetLang
+                    })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    return data.translations[0].text;
+                }
+            }
+        } catch (error) {
+            console.log('DeepL API demo mode');
+        }
+        
+        return `🌐 DeepL翻訳デモ: "${text}" → ${targetLang}`;
+    }
+
     // 高度なチャット応答システム
-    function generateResponse(userMessage) {
+    async function generateResponse(userMessage) {
         const message = userMessage.toLowerCase();
         
+        // 翻訳要求の検出
+        if (message.includes('翻訳') || message.includes('translate') || message.includes('english')) {
+            const translatedText = await translateText(userMessage, 'EN');
+            return `🌐 DeepL翻訳結果:\n${translatedText}\n\n※実際のDeepL APIが設定されていません。デモ表示です。`;
+        }
+
+        // GPTモード要求の検出
+        if (message.includes('gpt') || message.includes('ai') || message.includes('詳しく')) {
+            return await getGPTResponse(userMessage);
+        }
+
+        // ローカル知識ベースでの応答
+        return generateLocalResponse(userMessage);
+    }
+
+    // ローカル知識ベースでの応答
+    function generateLocalResponse(userMessage) {
+        const message = userMessage.toLowerCase();
+        
+        // 日本酒基礎知識での検索
+        const knowledgeResponse = searchSakeKnowledge(message);
+        if (knowledgeResponse) {
+            return knowledgeResponse;
+        }
+
         // 商品名での検索
         const product = findProductByName(message);
         if (product) {
@@ -243,6 +462,66 @@
         
         // デフォルト応答
         return defaultResponse();
+    }
+
+    // 日本酒基礎知識での検索
+    function searchSakeKnowledge(message) {
+        // 日本酒の種類について
+        for (const [type, info] of Object.entries(sakeKnowledge.types)) {
+            if (message.includes(type.toLowerCase()) || message.includes(type)) {
+                return `🌸 ${type}について\n\n📝 ${info.description}\n\n✨ 特徴：${info.characteristics}\n🍶 アルコール度数：${info.alcohol}\n🌡️ おすすめの飲み方：${info.serving}\n\n日本酒の分類は製造方法と精米歩合によって決まります。他にもご質問がございましたら、お聞かせください！`;
+            }
+        }
+
+        // 醸造工程について
+        for (const [process, description] of Object.entries(sakeKnowledge.brewing)) {
+            if (message.includes(process) || message.includes(process.replace('・', ''))) {
+                return `🏭 ${process}について\n\n${description}\n\n日本酒造りは約10の工程を経て完成します。各工程が酒質に大きく影響するため、杜氏の技術と経験が重要です。\n\n他の工程についてもお聞かせください！`;
+            }
+        }
+
+        // 飲み方・温度について
+        for (const [method, info] of Object.entries(sakeKnowledge.serving)) {
+            if (message.includes(method)) {
+                return `🌡️ ${method}について\n\n🌡️ 温度：${info.temperature}\n🍶 適した日本酒：${info.suitable}\n✨ 効果：${info.effect}\n\n温度によって香りや味わいが大きく変わるのが日本酒の魅力です。ぜひ色々な温度でお試しください！`;
+            }
+        }
+
+        // 日本酒用語について
+        for (const [term, explanation] of Object.entries(sakeKnowledge.terms)) {
+            if (message.includes(term)) {
+                return `📚 ${term}とは\n\n${explanation}\n\n日本酒を理解する上で重要な用語の一つです。他にもご不明な用語がございましたら、お気軽にお聞きください！`;
+            }
+        }
+
+        // 産地について
+        for (const [region, characteristic] of Object.entries(sakeKnowledge.regions)) {
+            if (message.includes(region)) {
+                return `🗾 ${region}の日本酒について\n\n${characteristic}\n\n各地域の気候、水質、米の品種などが酒質に影響を与え、その土地ならではの個性的な日本酒が生まれます。\n\n他の産地についてもお聞かせください！`;
+            }
+        }
+
+        // 酒米について
+        for (const [rice, info] of Object.entries(sakeKnowledge.rice)) {
+            if (message.includes(rice)) {
+                return `🌾 ${rice}について\n\n${info}\n\n酒米は日本酒の品質を決める重要な要素の一つです。品種によって香りや味わいの特徴が変わります。\n\n他の酒米についてもご質問ください！`;
+            }
+        }
+
+        // 一般的な日本酒の質問
+        if (message.includes('日本酒とは') || message.includes('日本酒って') || message.includes('何で作る')) {
+            return `🍶 日本酒について\n\n日本酒は、米と水を主原料として、麹菌と酵母の力で発酵させて造る日本の伝統的なお酒です。\n\n🌾 原料：米、米麹、水（一部に醸造アルコール）\n🔬 製法：並行複発酵という世界でも珍しい製法\n🍶 アルコール度数：一般的に15-16%\n📊 分類：原料と製法により特定名称酒と普通酒に分類\n\n何か具体的にお知りになりたいことはありますか？`;
+        }
+
+        if (message.includes('どう違う') || message.includes('違い') || message.includes('比較')) {
+            return `🔍 日本酒の分類と違い\n\n【原料による分類】\n🌾 純米系：米、米麹、水のみ\n🍶 醸造酒系：上記に醸造アルコール添加\n\n【精米歩合による分類】\n✨ 大吟醸：50%以下\n🌸 吟醸：60%以下\n🍚 本醸造：70%以下\n\n【組み合わせ例】\n• 純米大吟醸：純米で精米歩合50%以下\n• 吟醸：醸造アルコール添加で精米歩合60%以下\n\n具体的にどの種類の違いを知りたいですか？`;
+        }
+
+        if (message.includes('おいしい飲み方') || message.includes('どう飲む')) {
+            return `🍶 美味しい日本酒の飲み方\n\n🌡️ 温度で楽しむ\n• 冷酒：香りが立ち、すっきり\n• 常温：バランスの良い味わい\n• 燗酒：香りが穏やかで、まろやか\n\n🍽️ 料理と合わせる\n• 魚料理：吟醸系、純米吟醸\n• 肉料理：純米酒、本醸造\n• 和食：オールマイティ\n\n🥃 器で変わる\n• 猪口：香りを楽しむ\n• ワイングラス：香りが立つ\n• 徳利とお猪口：伝統的\n\nお好みの飲み方を見つけてください！`;
+        }
+
+        return null; // 基礎知識に該当しない場合はnullを返す
     }
 
     // 商品名で検索
@@ -566,8 +845,8 @@
         }
     }
 
-    // メッセージ送信
-    function sendMessage() {
+    // メッセージ送信（非同期対応）
+    async function sendMessage() {
         const input = document.getElementById('sakura-input');
         if (!input || !input.value.trim()) return;
 
@@ -575,20 +854,92 @@
         addUserMessage(userMessage);
         input.value = '';
 
-        // AI応答（少し遅延して自然に）
-        setTimeout(() => {
-            const aiResponse = generateResponse(userMessage);
+        // ローディング表示
+        addLoadingMessage();
+
+        try {
+            // AI応答（非同期）
+            const aiResponse = await generateResponse(userMessage);
+            removeLoadingMessage();
             addAIMessage(aiResponse);
-        }, 800);
+        } catch (error) {
+            removeLoadingMessage();
+            addAIMessage('申し訳ございません。一時的にエラーが発生しました。もう一度お試しください。');
+        }
     }
 
-    // クイックメッセージ送信
-    function sendQuickMessage(message) {
+    // クイックメッセージ送信（非同期対応）
+    async function sendQuickMessage(message) {
         addUserMessage(message);
-        setTimeout(() => {
-            const aiResponse = generateResponse(message);
+        addLoadingMessage();
+        
+        try {
+            const aiResponse = await generateResponse(message);
+            removeLoadingMessage();
             addAIMessage(aiResponse);
-        }, 600);
+        } catch (error) {
+            removeLoadingMessage();
+            addAIMessage('申し訳ございません。エラーが発生しました。');
+        }
+    }
+
+    // ローディングメッセージ表示
+    function addLoadingMessage() {
+        const messagesContainer = document.getElementById('sakura-messages');
+        if (!messagesContainer) return;
+
+        const loadingHTML = `
+            <div id="loading-message" style="display: flex; justify-content: flex-start; margin: 8px 0;">
+                <div style="
+                    background: linear-gradient(135deg, #FFFFFF 0%, #FEFEFD 50%, #F8F9FA 100%);
+                    color: #2D1B2F;
+                    padding: 20px 24px;
+                    border-radius: 12px 28px 28px 28px;
+                    box-shadow: 0 6px 20px rgba(248, 187, 217, 0.25);
+                    border: 2px solid rgba(248, 187, 217, 0.4);
+                    position: relative;
+                ">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <div style="
+                            width: 8px; height: 8px; 
+                            background: #F8BBD9; 
+                            border-radius: 50%; 
+                            animation: bounce 1.4s ease-in-out infinite both;
+                        "></div>
+                        <div style="
+                            width: 8px; height: 8px; 
+                            background: #FADADD; 
+                            border-radius: 50%; 
+                            animation: bounce 1.4s ease-in-out 0.16s infinite both;
+                        "></div>
+                        <div style="
+                            width: 8px; height: 8px; 
+                            background: #FFE4E1; 
+                            border-radius: 50%; 
+                            animation: bounce 1.4s ease-in-out 0.32s infinite both;
+                        "></div>
+                        <span style="margin-left: 8px; color: #4D3A4F;">AIサクラが考えています...</span>
+                    </div>
+                    <style>
+                        @keyframes bounce {
+                            0%, 80%, 100% { transform: scale(0); }
+                            40% { transform: scale(1); }
+                        }
+                    </style>
+                </div>
+            </div>
+        `;
+        
+        messagesContainer.insertAdjacentHTML('beforeend', loadingHTML);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    // ローディングメッセージ削除
+    function removeLoadingMessage() {
+        const loadingMessage = document.getElementById('loading-message');
+        if (loadingMessage) {
+            loadingMessage.remove();
+        }
     }
 
     // ユーザーメッセージ追加
