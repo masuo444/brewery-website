@@ -13,6 +13,42 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Dancing+Script:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css?v=3.1">
     <script src="clean-url.js"></script>
+    
+    <!-- 強制的なAIサクラデザイン上書き -->
+    <style>
+        /* 桜色デザイン強制適用 - 最優先 */
+        .ai-sakura-sticky-btn {
+            background: linear-gradient(135deg, #FADADD 0%, #F8BBD9 30%, #FFE4E1 100%) !important;
+            padding: 12px 20px !important;
+            box-shadow: 0 -6px 24px rgba(248, 187, 217, 0.3), 0 -2px 12px rgba(250, 218, 221, 0.2) !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+        }
+        
+        .sakura-sticky-btn {
+            width: 85% !important;
+            max-width: 380px !important;
+            padding: 14px 20px !important;
+            background: linear-gradient(135deg, #F8BBD9 0%, #FADADD 50%, #FFE4E1 100%) !important;
+            color: #5D4E75 !important;
+            border: 2px solid rgba(248, 187, 217, 0.6) !important;
+            border-radius: 28px !important;
+            font-weight: 600 !important;
+            font-size: 1.05rem !important;
+            box-shadow: 0 4px 16px rgba(248, 187, 217, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+            text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8) !important;
+            backdrop-filter: blur(8px) !important;
+        }
+        
+        .sakura-sticky-btn:hover {
+            background: linear-gradient(135deg, #F0A6CA 0%, #F8BBD9 50%, #FADADD 100%) !important;
+            transform: translateY(-2px) scale(1.02) !important;
+            box-shadow: 0 6px 20px rgba(248, 187, 217, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+            border-color: rgba(240, 166, 202, 0.8) !important;
+            color: #4A3A5A !important;
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
