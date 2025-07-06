@@ -165,7 +165,7 @@
         ],
         welcome: [
             'こんにちは！AIサクラです🌸 益々酒造へようこそ！日本酒について何でもお聞きください。',
-            'いらっしゃいませ！私は益々酒造のAI杜氏、サクラです🌸 お気軽にご質問ください。',
+            'いらっしゃいませ！私は益々酒造のAIアシスタント、サクラです🌸 お気軽にご質問ください。',
             'ようこそ益々酒造へ！🍶 日本酒のことなら何でもお答えします。どのようなことが知りたいですか？'
         ]
     };
@@ -193,7 +193,7 @@
                         </div>
                         <div>
                             <div style="font-weight: 700; font-size: 1.2em; color: #4A1A3A;">AIサクラ</div>
-                            <div style="font-size: 0.85em; opacity: 0.8; color: #8B4F77;">益々酒造 AI杜氏 🌸</div>
+                            <div style="font-size: 0.85em; opacity: 0.8; color: #8B4F77;">益々酒造 AIアシスタント 🌸</div>
                         </div>
                     </div>
                     <button onclick="closeSakuraChat()" style="background: rgba(255, 255, 255, 0.2); border: none; color: #4A1A3A; font-size: 1.4em; cursor: pointer; padding: 8px; border-radius: 50%; width: 36px; height: 36px; transition: all 0.2s ease; display: flex; align-items: center; justify-content: center;" onmouseover="this.style.background='rgba(255,255,255,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'">×</button>
