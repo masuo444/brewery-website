@@ -534,6 +534,46 @@
     <script src="js/analytics.js"></script>
     <script src="js/simple-chat.js?v=3.1"></script>
     <script>
+        // 桜色デザイン強制適用スクリプト
+        document.addEventListener('DOMContentLoaded', function() {
+            // AIサクラボタンのスタイルを強制適用
+            function applySakuraDesign() {
+                const stickyBtn = document.querySelector('.ai-sakura-sticky-btn');
+                const sakuraBtn = document.querySelector('.sakura-sticky-btn');
+                
+                if (stickyBtn) {
+                    stickyBtn.style.background = 'linear-gradient(135deg, #FADADD 0%, #F8BBD9 30%, #FFE4E1 100%)';
+                    stickyBtn.style.padding = '12px 20px';
+                    stickyBtn.style.boxShadow = '0 -6px 24px rgba(248, 187, 217, 0.3), 0 -2px 12px rgba(250, 218, 221, 0.2)';
+                    stickyBtn.style.display = 'flex';
+                    stickyBtn.style.justifyContent = 'center';
+                    stickyBtn.style.alignItems = 'center';
+                }
+                
+                if (sakuraBtn) {
+                    sakuraBtn.style.width = '85%';
+                    sakuraBtn.style.maxWidth = '380px';
+                    sakuraBtn.style.padding = '14px 20px';
+                    sakuraBtn.style.background = 'linear-gradient(135deg, #F8BBD9 0%, #FADADD 50%, #FFE4E1 100%)';
+                    sakuraBtn.style.color = '#5D4E75';
+                    sakuraBtn.style.border = '2px solid rgba(248, 187, 217, 0.6)';
+                    sakuraBtn.style.borderRadius = '28px';
+                    sakuraBtn.style.fontWeight = '600';
+                    sakuraBtn.style.fontSize = '1.05rem';
+                    sakuraBtn.style.boxShadow = '0 4px 16px rgba(248, 187, 217, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.8)';
+                    sakuraBtn.style.textShadow = '0 1px 3px rgba(255, 255, 255, 0.8)';
+                    sakuraBtn.style.backdropFilter = 'blur(8px)';
+                }
+            }
+            
+            // 即座に適用
+            applySakuraDesign();
+            
+            // 少し遅延して再適用（他のスクリプトの後に）
+            setTimeout(applySakuraDesign, 500);
+            setTimeout(applySakuraDesign, 1000);
+        });
+        
         // AI Chat button event listeners
         document.addEventListener('DOMContentLoaded', function() {
             // Inline button listener
