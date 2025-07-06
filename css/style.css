@@ -5045,37 +5045,75 @@ body {
     border-left: 8px solid var(--color-accent);
 }
 
-/* Mobile Sticky CTA Styles */
-.mobile-sticky-cta {
+/* AI Sakura Sticky Button Styles */
+.ai-sakura-sticky-btn {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    background: var(--gradient-accent);
+    background: linear-gradient(135deg, #FFE4E1 0%, #FFC0CB 30%, #FFB6C1 100%);
     padding: 16px 20px;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 -8px 32px rgba(255, 182, 193, 0.4), 0 -2px 16px rgba(255, 105, 180, 0.2);
     z-index: 1000;
     display: block;
+    border-top: 2px solid rgba(255, 255, 255, 0.8);
 }
 
-.sticky-cta-btn {
+.sakura-sticky-btn {
     display: block;
     width: 100%;
-    padding: 16px;
-    background: var(--color-primary);
+    padding: 18px;
+    background: linear-gradient(135deg, #FF69B4 0%, #FF1493 50%, #FF69B4 100%);
     color: white;
-    text-decoration: none;
+    border: none;
     text-align: center;
-    border-radius: var(--border-radius);
+    border-radius: 25px;
     font-weight: 700;
     font-size: 1.1rem;
-    transition: var(--transition-normal);
+    transition: all 0.3s ease;
     font-family: var(--font-japanese);
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
 }
 
-.sticky-cta-btn:hover {
-    background: var(--color-secondary);
-    transform: translateY(-2px);
+.sakura-sticky-btn::before {
+    content: '🌸';
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    opacity: 0.3;
+    animation: float 3s ease-in-out infinite;
+}
+
+.sakura-sticky-btn::after {
+    content: '🌸';
+    position: absolute;
+    right: -15px;
+    top: 20%;
+    font-size: 1.5rem;
+    opacity: 0.4;
+    animation: float 2.5s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(-50%) translateX(0) rotate(0deg); }
+    50% { transform: translateY(-70%) translateX(5px) rotate(5deg); }
+}
+
+.sakura-sticky-btn:hover {
+    background: linear-gradient(135deg, #FF1493 0%, #FF69B4 50%, #FF1493 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 105, 180, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.sakura-sticky-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.5);
 }
 
 /* Floating Action Buttons */
@@ -5138,7 +5176,7 @@ body {
 }
 
 @media screen and (min-width: 769px) {
-    .mobile-sticky-cta {
+    .ai-sakura-sticky-btn {
         display: none;
     }
     

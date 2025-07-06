@@ -480,9 +480,11 @@
         </div>
     </footer>
 
-    <!-- Mobile Sticky CTA -->
-    <div class="mobile-sticky-cta">
-        <a href="#products" class="sticky-cta-btn" data-translate="mobile_cta">プレミアム日本酒を見る</a>
+    <!-- AI Sakura Fixed Button -->
+    <div class="ai-sakura-sticky-btn">
+        <button onclick="openSakuraChat()" class="sakura-sticky-btn" data-translate="ai_sakura_chat">
+            🌸 AIサクラに相談する
+        </button>
     </div>
 
     <script src="js/data.js"></script>
@@ -493,18 +495,19 @@
     <script src="js/analytics.js"></script>
     <script src="js/simple-chat.js"></script>
     <script>
-        // AI Chat button event listener
+        // AI Chat button event listeners
         document.addEventListener('DOMContentLoaded', function() {
+            // Inline button listener
             const aiChatBtn = document.getElementById('aiChatStartBtn');
             if (aiChatBtn) {
                 aiChatBtn.addEventListener('click', function() {
                     if (typeof window.openSakuraChat === 'function') {
                         window.openSakuraChat();
-                    } else if (typeof window.openAIChat === 'function') {
-                        window.openAIChat();
                     }
                 });
             }
+            
+            // Sticky button is handled by onclick in HTML
         });
     </script>
     
