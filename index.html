@@ -532,37 +532,7 @@
     <script src="js/script.js?v=3.2"></script>
     <script src="js/interactive.js"></script>
     <script src="js/analytics.js"></script>
-    <script src="js/simple-chat.js?v=3.2"></script>
-    
-    <!-- Chat Button Debug Script -->
-    <script>
-        console.log('🌸 Checking chat functionality...');
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            const chatBtn = document.getElementById('sakura-chat-btn');
-            console.log('Chat button found:', chatBtn);
-            console.log('openSakuraChat function exists:', typeof window.openSakuraChat);
-            
-            if (chatBtn && typeof window.openSakuraChat !== 'function') {
-                console.error('openSakuraChat function not found! Creating fallback...');
-                // Fallback function
-                window.openSakuraChat = function() {
-                    alert('チャット機能を読み込み中です。少々お待ちください。');
-                    setTimeout(() => location.reload(), 1000);
-                };
-            }
-        });
-        
-        // Additional check after 2 seconds
-        setTimeout(() => {
-            console.log('🌸 Final check - openSakuraChat:', typeof window.openSakuraChat);
-            const btn = document.getElementById('sakura-chat-btn');
-            if (btn) {
-                btn.style.border = '3px solid red';
-                console.log('Button is visible and styled');
-            }
-        }, 2000);
-    </script>
+    <script src="js/ai-sakura-chat.js?v=4.0"></script>
     <script>
         // 桜色デザイン強制適用スクリプト
         document.addEventListener('DOMContentLoaded', function() {
