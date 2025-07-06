@@ -130,12 +130,10 @@
                     </div>
                 </div>
                 <div class="ai-features">
-                    <h3 data-translate="ai_features_title">🌸 AIソムリエ・サクラが24時間サポート</h3>
+                    <h3 data-translate="ai_features_title">🌸 AIアシスタント・サクラ</h3>
                     <ul>
-                        <li data-translate="ai_feature_1">🍶 全銘柄の詳細情報を即座に回答</li>
-                        <li data-translate="ai_feature_2">🍽️ 料理とのペアリング提案</li>
-                        <li data-translate="ai_feature_3">🌐 10言語対応で世界中のゲストに対応</li>
-                        <li data-translate="ai_feature_4">📚 300年の歴史と醸造知識をAIが学習</li>
+                        <li data-translate="ai_feature_1">🍶 日本酒についてお気軽にお尋ねください</li>
+                        <li data-translate="ai_feature_2">💬 益々酒造についてご案内いたします</li>
                     </ul>
                     <button class="ai-chat-btn sakura-chat-btn" id="aiChatStartBtn" data-translate="ai_chat_start">
                         🌸 サクラに相談してみる
@@ -154,41 +152,6 @@
             
             
             <div class="products-showcase">
-                <!-- Product 1: 純米吟醸「益々」 -->
-                <div class="sake-card luxury" data-product-id="1">
-                    <div class="sake-image-container">
-                        <div class="sake-image-frame">
-                            <img src="images/products/junmai-ginjo.png" alt="純米吟醸「益々」" class="sake-bottle">
-                            <div class="image-overlay"></div>
-                        </div>
-                        <div class="sake-badge premium-badge">
-                            <span>PREMIUM</span>
-                        </div>
-                    </div>
-                    <div class="sake-info">
-                        <div class="sake-header">
-                            <h3 class="sake-name" data-translate="sake_junmai_ginjo_name">純米吟醸「益々」</h3>
-                            <p class="sake-category" data-translate="sake_junmai_ginjo_type">Junmai Ginjo</p>
-                        </div>
-                        <p class="sake-description" data-translate="sake_junmai_ginjo_desc">メロンやリンゴを思わせるフルーティーな香り。軽快でキレの良い後味。杯を重ねるごとに増す、華やかな香りを表現。</p>
-                        <div class="sake-specs">
-                            <div class="spec-item">
-                                <div class="spec-label" data-translate="alcohol">アルコール度数</div>
-                                <div class="spec-value">15.5%</div>
-                            </div>
-                            <div class="spec-item">
-                                <div class="spec-label" data-translate="ricePalish">精米歩合</div>
-                                <div class="spec-value">50%</div>
-                            </div>
-                        </div>
-                        <a href="products/junmai-ginjo" class="sake-link">
-                            <button class="explore-btn" data-translate="viewDetails">
-                                <span>詳細を見る</span>
-                                <i class="arrow">→</i>
-                            </button>
-                        </a>
-                    </div>
-                </div>
 
                 <!-- Product 2: 本醸造「益々」 -->
                 <div class="sake-card classic" data-product-id="2">
@@ -340,96 +303,7 @@
         </div>
     </section>
 
-    <!-- Interactive Brewing Process Section -->
-    <section class="brewing-process" id="brewing-process">
-        <div class="container">
-            <h2 class="section-title" data-translate="brewing_process_title">🏭 醸造工程を見て学ぶ</h2>
-            <p class="section-subtitle" data-translate="brewing_process_subtitle">各工程をクリックして詳細説明をご覧ください</p>
-            
-            <div class="process-interactive">
-                <div class="process-diagram">
-                    <div class="process-step-interactive" data-step="rice-washing">
-                        <div class="step-icon">🌾</div>
-                        <span class="step-name" data-translate="step_rice_washing">米洗い</span>
-                    </div>
-                    <div class="process-arrow">→</div>
-                    
-                    <div class="process-step-interactive" data-step="steaming">
-                        <div class="step-icon">♨️</div>
-                        <span class="step-name" data-translate="step_steaming">蒸米</span>
-                    </div>
-                    <div class="process-arrow">→</div>
-                    
-                    <div class="process-step-interactive" data-step="koji">
-                        <div class="step-icon">🍄</div>
-                        <span class="step-name" data-translate="step_koji">麹造り</span>
-                    </div>
-                    <div class="process-arrow">→</div>
-                    
-                    <div class="process-step-interactive" data-step="fermentation">
-                        <div class="step-icon">⚗️</div>
-                        <span class="step-name" data-translate="step_fermentation">発酵</span>
-                    </div>
-                    <div class="process-arrow">→</div>
-                    
-                    <div class="process-step-interactive" data-step="pressing">
-                        <div class="step-icon">🏺</div>
-                        <span class="step-name" data-translate="step_pressing">圧搾</span>
-                    </div>
-                    <div class="process-arrow">→</div>
-                    
-                    <div class="process-step-interactive" data-step="aging">
-                        <div class="step-icon">🍶</div>
-                        <span class="step-name" data-translate="step_aging">熟成</span>
-                    </div>
-                </div>
-                
-                <div class="process-explanation" id="processExplanation">
-                    <div class="explanation-placeholder">
-                        <h3 data-translate="click_process_title">工程をクリックしてください</h3>
-                        <p data-translate="click_process_subtitle">各段階の詳細説明をご覧いただけます</p>
-                        <div class="explanation-icon">👆</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Rice Types Interactive Section -->
-    <section class="rice-types" id="rice-types">
-        <div class="container">
-            <h2 class="section-title" data-translate="rice_types_title">🌾 酒造好適米について</h2>
-            <p class="section-subtitle" data-translate="rice_types_subtitle">使用している米の種類をクリックして特徴をご覧ください</p>
-            
-            <div class="rice-grid">
-                <div class="rice-card interactive-rice" data-rice="gohyakumangoku">
-                    <div class="rice-image">🌾</div>
-                    <h3 data-translate="rice_gohyaku_name">五百万石</h3>
-                    <p class="rice-origin" data-translate="rice_gohyaku_origin">新潟県産</p>
-                </div>
-                
-                <div class="rice-card interactive-rice" data-rice="koshiibuki">
-                    <div class="rice-image">🌾</div>
-                    <h3 data-translate="rice_koshi_name">こしいぶき</h3>
-                    <p class="rice-origin" data-translate="rice_koshi_origin">新潟県産</p>
-                </div>
-                
-                <div class="rice-card interactive-rice" data-rice="yamadanishiki">
-                    <div class="rice-image">🌾</div>
-                    <h3 data-translate="rice_yamada_name">山田錦</h3>
-                    <p class="rice-origin" data-translate="rice_yamada_origin">兵庫県産</p>
-                </div>
-            </div>
-            
-            <div class="rice-explanation" id="riceExplanation">
-                <div class="explanation-placeholder">
-                    <h3 data-translate="click_rice_title">米の種類をクリックしてください</h3>
-                    <p data-translate="click_rice_subtitle">各品種の特徴と使用される銘柄をご紹介します</p>
-                    <div class="explanation-icon">👆</div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Awards and Export Section -->
     <section class="awards-export" id="awards-export">
