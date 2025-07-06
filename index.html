@@ -31,7 +31,7 @@
             max-width: 380px !important;
             padding: 14px 20px !important;
             background: linear-gradient(135deg, #F8BBD9 0%, #FADADD 50%, #FFE4E1 100%) !important;
-            color: #5D4E75 !important;
+            color: #2D1B2F !important;
             border: 2px solid rgba(248, 187, 217, 0.6) !important;
             border-radius: 28px !important;
             font-weight: 600 !important;
@@ -46,7 +46,7 @@
             transform: translateY(-2px) scale(1.02) !important;
             box-shadow: 0 6px 20px rgba(248, 187, 217, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
             border-color: rgba(240, 166, 202, 0.8) !important;
-            color: #4A3A5A !important;
+            color: #1F0E1F !important;
         }
     </style>
 </head>
@@ -608,7 +608,7 @@
     <script>
     (function() {
         function forceApplySakuraDesign() {
-            console.log('🌸 Applying Sakura Design...');
+            console.log('🌸 Applying Sakura Design with Better Contrast...');
             
             // AIサクラ固定ボタン
             const stickyBtn = document.querySelector('.ai-sakura-sticky-btn');
@@ -629,7 +629,7 @@
                 `;
             }
             
-            // サクラボタン
+            // サクラボタン（視認性大幅改善）
             const sakuraBtn = document.querySelector('.sakura-sticky-btn');
             if (sakuraBtn) {
                 sakuraBtn.style.cssText = `
@@ -638,40 +638,71 @@
                     max-width: 380px !important;
                     padding: 14px 20px !important;
                     background: linear-gradient(135deg, #F8BBD9 0%, #FADADD 50%, #FFE4E1 100%) !important;
-                    color: #5D4E75 !important;
-                    border: 2px solid rgba(248, 187, 217, 0.6) !important;
+                    color: #2D1B2F !important;
+                    border: 2px solid rgba(45, 27, 47, 0.3) !important;
                     text-align: center !important;
                     border-radius: 28px !important;
-                    font-weight: 600 !important;
-                    font-size: 1.05rem !important;
+                    font-weight: 700 !important;
+                    font-size: 1.1rem !important;
                     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
                     cursor: pointer !important;
                     box-shadow: 0 4px 16px rgba(248, 187, 217, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
-                    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8) !important;
+                    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9) !important;
                     position: relative !important;
                     overflow: hidden !important;
                     backdrop-filter: blur(8px) !important;
                 `;
                 
-                // ホバー効果を追加
+                // ホバー効果を追加（視認性改善版）
                 sakuraBtn.addEventListener('mouseenter', function() {
                     this.style.background = 'linear-gradient(135deg, #F0A6CA 0%, #F8BBD9 50%, #FADADD 100%)';
                     this.style.transform = 'translateY(-2px) scale(1.02)';
                     this.style.boxShadow = '0 6px 20px rgba(248, 187, 217, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.9)';
-                    this.style.borderColor = 'rgba(240, 166, 202, 0.8)';
-                    this.style.color = '#4A3A5A';
+                    this.style.borderColor = 'rgba(45, 27, 47, 0.5)';
+                    this.style.color = '#1A0F1C';
                 });
                 
                 sakuraBtn.addEventListener('mouseleave', function() {
                     this.style.background = 'linear-gradient(135deg, #F8BBD9 0%, #FADADD 50%, #FFE4E1 100%)';
                     this.style.transform = 'translateY(0) scale(1)';
                     this.style.boxShadow = '0 4px 16px rgba(248, 187, 217, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.8)';
-                    this.style.borderColor = 'rgba(248, 187, 217, 0.6)';
-                    this.style.color = '#5D4E75';
+                    this.style.borderColor = 'rgba(45, 27, 47, 0.3)';
+                    this.style.color = '#2D1B2F';
                 });
             }
             
-            console.log('🌸 Sakura Design Applied!');
+            // チャットUI内の視認性改善
+            const chatContainer = document.getElementById('sakura-chat-container');
+            if (chatContainer) {
+                // ヘッダーテキストの色修正
+                const headerTexts = chatContainer.querySelectorAll('[style*="color: #5D4E75"], [style*="color: #7A6B8F"], [style*="color: #A085B5"]');
+                headerTexts.forEach(text => {
+                    text.style.color = '#2D1B2F';
+                });
+                
+                // ボタンの色修正
+                const quickButtons = chatContainer.querySelectorAll('button[onclick*="sendQuickMessage"]');
+                quickButtons.forEach(btn => {
+                    btn.style.color = '#2D1B2F';
+                    btn.style.fontWeight = '700';
+                });
+                
+                // 入力欄の色修正
+                const input = chatContainer.querySelector('#sakura-input');
+                if (input) {
+                    input.style.color = '#2D1B2F';
+                    input.style.fontWeight = '600';
+                }
+                
+                // 送信ボタンの色修正
+                const sendBtn = chatContainer.querySelector('button[onclick="sendMessage()"]');
+                if (sendBtn) {
+                    sendBtn.style.color = '#2D1B2F';
+                    sendBtn.style.fontWeight = '700';
+                }
+            }
+            
+            console.log('🌸 High Contrast Sakura Design Applied!');
         }
         
         // 複数のタイミングで実行
