@@ -249,96 +249,160 @@
         ]
     };
 
-    // API設定
-    const API_CONFIG = {
-        openai: {
-            // 実際のAPIキーは環境変数から取得
-            apiKey: 'sk-demo-key', // デモ用（実装時は環境変数から）
-            endpoint: 'https://api.openai.com/v1/chat/completions'
-        },
-        deepl: {
-            apiKey: 'demo-key', // デモ用（実装時は環境変数から）
-            endpoint: 'https://api-free.deepl.com/v2/translate'
-        }
-    };
+    // API設定は env-config.js から読み込み
+    function getApiConfig() {
+        return window.API_CONFIG || {
+            openai: {
+                apiKey: 'demo-key',
+                endpoint: 'https://api.openai.com/v1/chat/completions',
+                model: 'gpt-3.5-turbo',
+                maxTokens: 500,
+                temperature: 0.7
+            },
+            deepl: {
+                apiKey: 'demo-key',
+                endpoint: 'https://api-free.deepl.com/v2/translate'
+            },
+            settings: {
+                timeout: 10000,
+                retryCount: 3
+            }
+        };
+    }
 
-    // GPT APIを使用したAI応答（デモ版）
+    // GPT APIを使用したAI応答（実装版）
     async function getGPTResponse(userMessage) {
+        const config = getApiConfig();
+        
         try {
             // 実際のAPIキーがある場合のみAPI呼び出し
-            if (API_CONFIG.openai.apiKey.startsWith('sk-') && API_CONFIG.openai.apiKey !== 'sk-demo-key') {
-                const response = await fetch(API_CONFIG.openai.endpoint, {
+            if (config.openai.apiKey && 
+                config.openai.apiKey.startsWith('sk-') && 
+                !config.openai.apiKey.includes('demo') &&
+                !config.openai.apiKey.includes('your-actual')) {
+                
+                console.log('🤖 Calling OpenAI GPT API...');
+                
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), config.settings.timeout);
+                
+                const response = await fetch(config.openai.endpoint, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${API_CONFIG.openai.apiKey}`
+                        'Authorization': `Bearer ${config.openai.apiKey}`
                     },
                     body: JSON.stringify({
-                        model: "gpt-3.5-turbo",
+                        model: config.openai.model,
                         messages: [
                             {
                                 role: "system",
-                                content: "あなたは益々酒造のAIアシスタント「AIサクラ」です。日本酒の専門知識を持ち、親しみやすく丁寧に対応します。"
+                                content: "あなたは新潟県の老舗酒蔵「益々酒造」のAIアシスタント「AIサクラ」です。300年の歴史を持つ酒蔵の専門知識を活かし、日本酒について親しみやすく丁寧に説明します。質問に対して具体的で有用な情報を提供し、必要に応じて益々酒造の商品もご紹介ください。"
                             },
                             {
                                 role: "user", 
                                 content: userMessage
                             }
                         ],
-                        max_tokens: 500,
-                        temperature: 0.7
-                    })
+                        max_tokens: config.openai.maxTokens,
+                        temperature: config.openai.temperature
+                    }),
+                    signal: controller.signal
                 });
+                
+                clearTimeout(timeoutId);
                 
                 if (response.ok) {
                     const data = await response.json();
-                    return `🤖 GPT応答: ${data.choices[0].message.content}`;
+                    console.log('✅ GPT API response received');
+                    return `🤖 GPT応答:\n\n${data.choices[0].message.content}`;
+                } else {
+                    console.error('GPT API error:', response.status, response.statusText);
+                    throw new Error(`API Error: ${response.status}`);
                 }
+            } else {
+                console.log('🔧 No valid OpenAI API key found, using local knowledge base');
+                return `🔧 デモモード: GPTモードですが、有効なAPIキーが設定されていません。\n\nローカル知識ベースでの回答:\n\n${generateLocalResponse(userMessage)}`;
             }
         } catch (error) {
-            console.log('GPT API demo mode - using local knowledge base');
+            if (error.name === 'AbortError') {
+                console.error('GPT API timeout');
+                return '⏰ GPT API応答がタイムアウトしました。ローカル知識ベースでお答えします。\n\n' + generateLocalResponse(userMessage);
+            } else {
+                console.error('GPT API error:', error);
+                return '❌ GPT APIでエラーが発生しました。ローカル知識ベースでお答えします。\n\n' + generateLocalResponse(userMessage);
+            }
         }
-        
-        // ローカル知識ベースにフォールバック
-        return generateLocalResponse(userMessage);
     }
 
-    // DeepL翻訳機能（デモ版）
+    // DeepL翻訳機能（実装版）
     async function translateText(text, targetLang = 'EN') {
+        const config = getApiConfig();
+        
         try {
-            if (API_CONFIG.deepl.apiKey !== 'demo-key') {
-                const response = await fetch(API_CONFIG.deepl.endpoint, {
+            if (config.deepl.apiKey && 
+                !config.deepl.apiKey.includes('demo') &&
+                !config.deepl.apiKey.includes('your-actual') &&
+                config.deepl.apiKey.length > 10) {
+                
+                console.log('🌐 Calling DeepL API...');
+                
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), config.settings.timeout);
+                
+                const response = await fetch(config.deepl.endpoint, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
-                        'Authorization': `DeepL-Auth-Key ${API_CONFIG.deepl.apiKey}`
+                        'Authorization': `DeepL-Auth-Key ${config.deepl.apiKey}`
                     },
                     body: new URLSearchParams({
                         'text': text,
-                        'target_lang': targetLang
-                    })
+                        'target_lang': targetLang,
+                        'source_lang': 'JA'
+                    }),
+                    signal: controller.signal
                 });
+                
+                clearTimeout(timeoutId);
                 
                 if (response.ok) {
                     const data = await response.json();
+                    console.log('✅ DeepL API response received');
                     return data.translations[0].text;
+                } else {
+                    console.error('DeepL API error:', response.status, response.statusText);
+                    throw new Error(`API Error: ${response.status}`);
                 }
+            } else {
+                console.log('🔧 No valid DeepL API key found');
+                return `🔧 デモモード: DeepL APIキーが設定されていません。\n\n簡易翻訳: "${text}" → ${targetLang}言語`;
             }
         } catch (error) {
-            console.log('DeepL API demo mode');
+            if (error.name === 'AbortError') {
+                console.error('DeepL API timeout');
+                return `⏰ DeepL API応答がタイムアウトしました。\n\n元のテキスト: "${text}"`;
+            } else {
+                console.error('DeepL API error:', error);
+                return `❌ DeepL APIでエラーが発生しました。\n\n元のテキスト: "${text}"`;
+            }
         }
-        
-        return `🌐 DeepL翻訳デモ: "${text}" → ${targetLang}`;
     }
 
     // 高度なチャット応答システム
     async function generateResponse(userMessage) {
         const message = userMessage.toLowerCase();
         
+        // API設定要求の検出
+        if (message.includes('api') && message.includes('設定') || message.includes('apiキー')) {
+            const apiStatus = window.hasRealApiKeys ? window.hasRealApiKeys() : { openai: false, deepl: false };
+            return `🔑 API設定状況\n\n🤖 OpenAI GPT: ${apiStatus.openai ? '✅ 設定済み' : '❌ 未設定'}\n🌐 DeepL翻訳: ${apiStatus.deepl ? '✅ 設定済み' : '❌ 未設定'}\n\nAPIキーを設定するには、ブラウザのコンソールで以下を実行してください：\nsetApiKeys("your-openai-key", "your-deepl-key")\n\n※APIキーは提供済みのものをご使用ください。`;
+        }
+
         // 翻訳要求の検出
         if (message.includes('翻訳') || message.includes('translate') || message.includes('english')) {
             const translatedText = await translateText(userMessage, 'EN');
-            return `🌐 DeepL翻訳結果:\n${translatedText}\n\n※実際のDeepL APIが設定されていません。デモ表示です。`;
+            return `🌐 DeepL翻訳結果:\n${translatedText}`;
         }
 
         // GPTモード要求の検出
