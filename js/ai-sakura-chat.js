@@ -11,7 +11,7 @@
         isInitialized: false
     };
 
-    // 益々酒造データベース
+    // 益々酒造完全商品データベース
     const masumasuData = {
         company: {
             name: "株式会社益々酒造",
@@ -23,52 +23,332 @@
         },
         products: [
             {
+                id: 1,
                 name: "純米吟醸「益々」",
+                type: "純米吟醸",
                 price: "3,500円（720ml）",
-                description: "メロンやリンゴを思わせるフルーティーな香り",
-                pairing: "鶏肉のハーブ焼き、カプレーゼ"
+                alcohol: "15.5%",
+                rice: "五百万石（新潟県清流町産）",
+                polishRatio: "50%",
+                description: "メロンやリンゴを思わせるフルーティーな香り。軽快でキレの良い後味が特徴です。",
+                taste: "華やかで上品な甘み、爽やかな酸味、キレの良い後味",
+                serving: "冷酒（10-15℃）",
+                pairing: "鶏肉のハーブ焼き、カプレーゼ、シーフードサラダ、白身魚のカルパッチョ",
+                occasions: "特別な食事、お祝い、贈り物",
+                stock: "在庫あり",
+                features: ["フルーティー", "上品", "飲みやすい", "女性に人気"]
             },
             {
+                id: 2,
                 name: "本醸造「益々」", 
+                type: "本醸造",
                 price: "2,200円（720ml）",
-                description: "スッキリとした辛口で、抜群のキレ",
-                pairing: "おでん、天ぷら、枝豆"
+                alcohol: "15.0%",
+                rice: "こしいぶき（新潟県産）",
+                polishRatio: "65%",
+                description: "スッキリとした辛口で、抜群のキレ。毎日の晩酌に寄り添う味わいです。",
+                taste: "すっきり辛口、クリーンな味わい、後味のキレが抜群",
+                serving: "常温・熱燗（40-50℃）",
+                pairing: "おでん、天ぷら、枝豆、焼き鳥、寄せ鍋",
+                occasions: "毎日の食事、晩酌、居酒屋料理",
+                stock: "在庫あり",
+                features: ["辛口", "キレ良い", "コスパ良し", "料理に合う"]
             },
             {
+                id: 3,
                 name: "スパークリング清酒「益々」",
+                type: "スパークリング",
                 price: "4,500円（720ml）", 
-                description: "きめ細やかな泡と、爽やかな酸味",
-                pairing: "生牡蠣、カナッペ、デザート"
+                alcohol: "12.0%",
+                rice: "五百万石（新潟県清流町産）",
+                polishRatio: "60%",
+                description: "きめ細やかな泡と、爽やかな酸味。乾杯シーンを華やかに彩ります。",
+                taste: "爽やかな酸味、やさしい甘み、軽快な泡立ち",
+                serving: "よく冷やして（5℃）シャンパングラス推奨",
+                pairing: "生牡蠣、カナッペ、デザート、フルーツ、前菜",
+                occasions: "パーティー、お祝い、乾杯、記念日",
+                stock: "在庫あり",
+                features: ["華やか", "爽やか", "パーティー向け", "低アルコール"]
+            },
+            {
+                id: 4,
+                name: "大吟醸「益々 極」",
+                type: "大吟醸",
+                price: "8,000円（720ml）",
+                alcohol: "16.0%",
+                rice: "山田錦（兵庫県特A地区産）",
+                polishRatio: "35%",
+                description: "最高級山田錦を35%まで磨き上げた究極の大吟醸。上品で繊細な香りと味わい。",
+                taste: "極上の香り、絹のような口当たり、深みのある味わい",
+                serving: "冷酒（8-12℃）",
+                pairing: "懐石料理、高級寿司、刺身、上品な和食",
+                occasions: "特別な日、贈答用、接待、記念品",
+                stock: "限定在庫",
+                features: ["最高級", "贈答品", "極上の香り", "職人技"]
+            },
+            {
+                id: 5,
+                name: "古酒「益々 熟成」",
+                type: "古酒",
+                price: "12,000円（720ml）",
+                alcohol: "18.0%",
+                rice: "五百万石（新潟県清流町産）",
+                polishRatio: "65%",
+                aging: "5年以上熟成",
+                description: "5年以上じっくりと熟成させた古酒。カラメルやナッツのような熟成香。",
+                taste: "まろやかで深い味わい、複雑な熟成香、長い余韻",
+                serving: "常温・ぬる燗（35-40℃）",
+                pairing: "中華料理、鰻の蒲焼、ドライフルーツ、チーズ",
+                occasions: "特別な夜、ゆっくりとした時間、大人の嗜み",
+                stock: "限定15本",
+                features: ["希少", "熟成", "複雑な味", "限定品"]
+            },
+            {
+                id: 6,
+                name: "梅酒「益々 梅の香」",
+                type: "梅酒",
+                price: "3,200円（720ml）",
+                alcohol: "12.0%",
+                base: "益々酒造 純米酒",
+                plum: "新潟県産南高梅",
+                description: "純米酒で漬け込んだ上品な梅酒。すっきりとした甘さと梅の香り。",
+                taste: "上品な梅の香り、すっきりとした甘さ、爽やかな後味",
+                serving: "ロック・ソーダ割り・ストレート",
+                pairing: "食前酒、デザート、バニラアイス、和菓子",
+                occasions: "食前酒、女子会、リラックスタイム",
+                stock: "在庫あり",
+                features: ["甘口", "香り豊か", "女性向け", "食前酒"]
+            },
+            {
+                id: 7,
+                name: "にごり酒「益々 雪化粧」",
+                type: "にごり酒",
+                price: "2,800円（720ml）",
+                alcohol: "14.5%",
+                rice: "こしいぶき（新潟県産）",
+                description: "もろみの旨みがそのまま残る、濃厚でクリーミーなにごり酒。",
+                taste: "濃厚でクリーミー、米の旨み、やさしい甘み",
+                serving: "よく振ってから冷酒で",
+                pairing: "鍋料理、豚肉料理、辛い料理、チーズ",
+                occasions: "冬の食事、鍋パーティー、家庭料理",
+                stock: "在庫あり",
+                features: ["濃厚", "クリーミー", "冬向け", "鍋料理に最適"]
             }
         ]
     };
 
-    // チャット応答システム
+    // 高度なチャット応答システム
     function generateResponse(userMessage) {
         const message = userMessage.toLowerCase();
         
+        // 商品名での検索
+        const product = findProductByName(message);
+        if (product) {
+            return formatProductDetails(product);
+        }
+        
+        // カテゴリ別検索
+        if (message.includes('純米吟醸')) {
+            const product = masumasuData.products.find(p => p.type === '純米吟醸');
+            return formatProductDetails(product);
+        }
+        if (message.includes('本醸造')) {
+            const product = masumasuData.products.find(p => p.type === '本醸造');
+            return formatProductDetails(product);
+        }
+        if (message.includes('大吟醸')) {
+            const product = masumasuData.products.find(p => p.type === '大吟醸');
+            return formatProductDetails(product);
+        }
+        if (message.includes('スパークリング')) {
+            const product = masumasuData.products.find(p => p.type === 'スパークリング');
+            return formatProductDetails(product);
+        }
+        if (message.includes('古酒') || message.includes('熟成')) {
+            const product = masumasuData.products.find(p => p.type === '古酒');
+            return formatProductDetails(product);
+        }
+        if (message.includes('梅酒')) {
+            const product = masumasuData.products.find(p => p.type === '梅酒');
+            return formatProductDetails(product);
+        }
+        if (message.includes('にごり')) {
+            const product = masumasuData.products.find(p => p.type === 'にごり酒');
+            return formatProductDetails(product);
+        }
+        
+        // おすすめ機能
         if (message.includes('おすすめ') || message.includes('推奨')) {
-            return `🌸 おすすめは純米吟醸「益々」です！\n\nメロンやリンゴを思わせるフルーティーな香りが特徴で、軽快でキレの良い後味をお楽しみいただけます。\n\n価格：3,500円（720ml）\nペアリング：鶏肉のハーブ焼き、カプレーゼ\n\n他にもご質問がございましたら、お気軽にお聞かせください！`;
+            if (message.includes('初心者') || message.includes('飲みやすい')) {
+                return recommendForBeginners();
+            }
+            if (message.includes('贈り物') || message.includes('プレゼント') || message.includes('ギフト')) {
+                return recommendForGifts();
+            }
+            if (message.includes('特別') || message.includes('高級')) {
+                return recommendPremium();
+            }
+            if (message.includes('安い') || message.includes('お得') || message.includes('コスパ')) {
+                return recommendBudget();
+            }
+            return recommendGeneral();
         }
         
+        // 料理との相性
         if (message.includes('料理') || message.includes('ペアリング') || message.includes('相性')) {
-            return `🍽️ お料理との相性についてご案内いたします！\n\n【純米吟醸】鶏肉のハーブ焼き、カプレーゼ、シーフードサラダ\n【本醸造】おでん、天ぷら、枝豆\n【スパークリング】生牡蠣、カナッペ、デザート\n\nどのようなお料理をご予定でしょうか？`;
+            if (message.includes('魚') || message.includes('刺身') || message.includes('寿司')) {
+                return pairingFish();
+            }
+            if (message.includes('肉') || message.includes('焼肉') || message.includes('ステーキ')) {
+                return pairingMeat();
+            }
+            if (message.includes('鍋') || message.includes('温かい') || message.includes('煮物')) {
+                return pairingHotDish();
+            }
+            if (message.includes('チーズ') || message.includes('洋食')) {
+                return pairingWestern();
+            }
+            return pairingGeneral();
         }
         
-        if (message.includes('飲み方') || message.includes('温度')) {
-            return `🍶 美味しい飲み方をご紹介いたします！\n\n【純米吟醸】冷酒（10-15℃）がおすすめ\n【本醸造】常温または熱燗で\n【スパークリング】よく冷やして（5℃）シャンパングラスで\n\nお好みの温度でお楽しみください！`;
+        // 飲み方・温度
+        if (message.includes('飲み方') || message.includes('温度') || message.includes('冷酒') || message.includes('熱燗')) {
+            return servingTips();
         }
         
-        if (message.includes('見学') || message.includes('ツアー')) {
-            return `🏭 酒蔵見学についてご案内いたします！\n\n【スタンダードツアー】\n時間：90分 / 料金：3,000円\n醸造工程見学、3種テイスティング付き\n\n【プレミアムツアー】\n時間：3時間 / 料金：10,000円\n杜氏による特別解説、懐石料理ペアリング\n\nご予約は3日前までにお願いいたします！`;
+        // 価格関連
+        if (message.includes('価格') || message.includes('値段') || message.includes('いくら')) {
+            return priceList();
         }
         
-        if (message.includes('価格') || message.includes('値段')) {
-            return `💰 商品価格をご案内いたします！\n\n• 純米吟醸「益々」：3,500円（720ml）\n• 本醸造「益々」：2,200円（720ml）\n• スパークリング清酒「益々」：4,500円（720ml）\n\n全国発送も承っております。詳しくはお問い合わせください！`;
+        // 在庫・購入
+        if (message.includes('在庫') || message.includes('買') || message.includes('購入') || message.includes('注文')) {
+            return purchaseInfo();
+        }
+        
+        // 比較
+        if (message.includes('比較') || message.includes('違い') || message.includes('どちら')) {
+            return productComparison();
+        }
+        
+        // 酒蔵見学
+        if (message.includes('見学') || message.includes('ツアー') || message.includes('蔵')) {
+            return tourInfo();
+        }
+        
+        // 会社情報
+        if (message.includes('会社') || message.includes('歴史') || message.includes('酒造') || message.includes('創業')) {
+            return companyInfo();
         }
         
         // デフォルト応答
-        return `🌸 ありがとうございます！\n\n益々酒造について、お答えできることは：\n\n🍶 おすすめの日本酒\n🍽️ お料理との相性\n🌡️ 美味しい飲み方\n🏭 酒蔵見学・ツアー\n💰 価格について\n\nどのようなことをお知りになりたいですか？`;
+        return defaultResponse();
+    }
+
+    // 商品名で検索
+    function findProductByName(message) {
+        return masumasuData.products.find(product => {
+            const productName = product.name.toLowerCase();
+            return message.includes('益々') || 
+                   message.includes('極') || 
+                   message.includes('熟成') || 
+                   message.includes('雪化粧') || 
+                   message.includes('梅の香');
+        });
+    }
+
+    // 商品詳細フォーマット
+    function formatProductDetails(product) {
+        if (!product) return defaultResponse();
+        
+        let response = `🌸 ${product.name}\n\n`;
+        response += `📝 ${product.description}\n\n`;
+        response += `💰 価格：${product.price}\n`;
+        response += `🍶 アルコール度数：${product.alcohol}\n`;
+        response += `🌾 使用米：${product.rice}\n`;
+        if (product.polishRatio) response += `✨ 精米歩合：${product.polishRatio}\n`;
+        if (product.aging) response += `⏰ 熟成：${product.aging}\n`;
+        response += `\n🍽️ 味わい：${product.taste}\n`;
+        response += `🌡️ 飲み方：${product.serving}\n`;
+        response += `👨‍🍳 ペアリング：${product.pairing}\n`;
+        response += `🎯 おすすめシーン：${product.occasions}\n`;
+        response += `📦 在庫状況：${product.stock}\n\n`;
+        response += `特徴：${product.features.join('、')}`;
+        
+        return response;
+    }
+
+    // 各種推奨機能
+    function recommendForBeginners() {
+        const product = masumasuData.products[0]; // 純米吟醸
+        return `🌸 初心者の方には「${product.name}」がおすすめです！\n\n${product.description}\n\nフルーティーで飲みやすく、日本酒入門に最適です。\n価格：${product.price}\n\n他にもご質問がございましたら、お聞かせください！`;
+    }
+
+    function recommendForGifts() {
+        const product = masumasuData.products[3]; // 大吟醸
+        return `🎁 贈り物でしたら「${product.name}」が最適です！\n\n${product.description}\n\n最高級の山田錦を使用した極上の大吟醸で、特別な方への贈り物に相応しい品質です。\n価格：${product.price}\n\n美しい化粧箱に入れてお届けいたします。`;
+    }
+
+    function recommendPremium() {
+        const product = masumasuData.products[4]; // 古酒
+        return `👑 特別な日には「${product.name}」をどうぞ！\n\n${product.description}\n\n5年以上じっくりと熟成させた希少な古酒です。\n価格：${product.price}\n在庫：${product.stock}\n\n大人の嗜みとして、ゆっくりとお楽しみください。`;
+    }
+
+    function recommendBudget() {
+        const product = masumasuData.products[1]; // 本醸造
+        return `💝 コストパフォーマンス重視でしたら「${product.name}」がおすすめ！\n\n${product.description}\n\n毎日の晩酌にも気軽にお楽しみいただける価格設定です。\n価格：${product.price}\n\n品質は本格的でありながら、お求めやすい価格を実現しています。`;
+    }
+
+    function recommendGeneral() {
+        return `🌸 おすすめ商品をご紹介いたします！\n\n【初心者向け】純米吟醸「益々」- フルーティーで飲みやすい\n【コスパ重視】本醸造「益々」- 毎日の晩酌に最適\n【特別な日】大吟醸「益々 極」- 最高級の贈答品\n【パーティー】スパークリング清酒「益々」- 華やかな乾杯に\n\nどのような用途をお考えでしょうか？`;
+    }
+
+    function pairingFish() {
+        return `🐟 魚料理におすすめのペアリング！\n\n🌸 純米吟醸「益々」\n→ 白身魚のカルパッチョ、シーフードサラダ\n\n✨ 大吟醸「益々 極」\n→ 高級寿司、刺身\n\n🥂 スパークリング清酒「益々」\n→ 生牡蠣、前菜\n\n魚の種類や調理法をお聞かせいただければ、より具体的にご提案いたします！`;
+    }
+
+    function pairingMeat() {
+        return `🥩 お肉料理におすすめのペアリング！\n\n🍶 本醸造「益々」\n→ 焼き鳥、豚肉料理\n\n🍯 古酒「益々 熟成」\n→ 鰻の蒲焼、中華料理\n\n☁️ にごり酒「益々 雪化粧」\n→ 豚肉料理、辛い料理\n\nお肉の種類や味付けをお聞かせください！`;
+    }
+
+    function pairingHotDish() {
+        return `🔥 温かいお料理におすすめ！\n\n🍶 本醸造「益々」（熱燗で）\n→ おでん、寄せ鍋、天ぷら\n\n☁️ にごり酒「益々 雪化粧」\n→ 鍋料理全般、煮物\n\n🍯 古酒「益々 熟成」（ぬる燗で）\n→ 中華料理、濃い味付けの料理\n\n温かい料理には温めた日本酒がよく合います！`;
+    }
+
+    function pairingWestern() {
+        return `🧀 洋食・チーズとのペアリング！\n\n🥂 スパークリング清酒「益々」\n→ カナッペ、フルーツ、軽いチーズ\n\n🌸 純米吟醸「益々」\n→ カプレーゼ、鶏肉のハーブ焼き\n\n☁️ にごり酒「益々 雪化粧」\n→ 濃厚なチーズ、クリーム系料理\n\n洋食にも日本酒は意外によく合います！`;
+    }
+
+    function pairingGeneral() {
+        return `🍽️ お料理との相性をご案内いたします！\n\n【魚料理】純米吟醸、大吟醸、スパークリング\n【肉料理】本醸造、古酒、にごり酒\n【鍋・煮物】本醸造（熱燗）、にごり酒\n【洋食・チーズ】スパークリング、純米吟醸\n【中華・濃い味】古酒、にごり酒\n【デザート】梅酒、スパークリング\n\nどのようなお料理をご予定ですか？`;
+    }
+
+    function servingTips() {
+        return `🌡️ 美味しい飲み方をご紹介！\n\n❄️ 冷酒（5-15℃）\n• 純米吟醸、大吟醸、スパークリング\n• フルーティーさや繊細な香りを楽しめます\n\n🌡️ 常温（20℃前後）\n• 本醸造、古酒\n• 日本酒本来の味わいを感じられます\n\n🔥 熱燗・ぬる燗（35-50℃）\n• 本醸造、古酒\n• 香りが立ち、体も温まります\n\n季節や気分に合わせてお楽しみください！`;
+    }
+
+    function priceList() {
+        return `💰 全商品価格表\n\n【お手頃価格】\n• 本醸造「益々」：2,200円\n• にごり酒「益々 雪化粧」：2,800円\n• 梅酒「益々 梅の香」：3,200円\n\n【プレミアム】\n• 純米吟醸「益々」：3,500円\n• スパークリング清酒「益々」：4,500円\n\n【最高級】\n• 大吟醸「益々 極」：8,000円\n• 古酒「益々 熟成」：12,000円\n\n（全て720ml、税込価格）`;
+    }
+
+    function purchaseInfo() {
+        return `🛒 ご購入について\n\n📦 在庫状況\n• 通常商品：在庫あり\n• 大吟醸「益々 極」：限定在庫\n• 古酒「益々 熟成」：限定15本\n\n🚚 配送\n• 全国発送承ります\n• クール便対応\n• ギフト包装可能\n\n📞 ご注文方法\n• お電話：0120-xxx-xxx\n• メール：info@masumasu-sake.jp\n• オンラインショップ準備中\n\nお気軽にお問い合わせください！`;
+    }
+
+    function productComparison() {
+        return `🔍 商品比較のポイント\n\n【純米吟醸 vs 大吟醸】\n純米吟醸：バランス良く飲みやすい\n大吟醸：より繊細で香り高い\n\n【本醸造 vs 純米吟醸】\n本醸造：すっきり辛口、コスパ◎\n純米吟醸：フルーティー、上品\n\n【スパークリング vs 梅酒】\n스파링：パーティー向け、低アルコール\n梅酒：甘口、食前酒に最適\n\n具体的にどの商品を比較されたいですか？`;
+    }
+
+    function tourInfo() {
+        return `🏭 酒蔵見学・ツアーのご案内\n\n【スタンダードツアー】\n• 時間：90分\n• 料金：3,000円\n• 定員：20名\n• 時間：10:00、14:00\n• 内容：醸造工程見学、3種テイスティング\n\n【プレミアムツアー】\n• 時間：3時間\n• 料金：10,000円\n• 定員：8名\n• 時間：11:00（土日のみ）\n• 内容：杜氏による特別解説、懐石料理ペアリング\n\n🎫 予約：3日前までにお電話ください\n📞 0120-xxx-xxx`;
+    }
+
+    function companyInfo() {
+        return `🏢 株式会社益々酒造について\n\n📅 創業：1724年（享保9年）\n🌟 歴史：300年の老舗酒蔵\n📍 所在地：新潟県清流町\n👥 従業員：145名（杜氏12名含む）\n🍶 年間生産量：2,800石（約504,000L）\n🌍 輸出：15ヶ国・地域\n\n💭 企業理念\n「伝統を守り、革新を追求し、世界に日本酒の素晴らしさを伝える」\n\n新潟の美しい自然の中で、伝統の技術と革新的な取り組みにより、最高品質の日本酒を醸造しています。`;
+    }
+
+    function defaultResponse() {
+        return `🌸 ありがとうございます！\n\n益々酒造について、詳しくお答えできます：\n\n🍶 商品詳細（純米吟醸、本醸造、大吟醸、スパークリング、古酒、梅酒、にごり酒）\n🎯 用途別おすすめ（初心者、贈り物、特別な日、コスパ重視）\n🍽️ 料理とのペアリング提案\n🌡️ 美味しい飲み方・温度\n💰 価格・購入方法\n🏭 酒蔵見学・ツアー\n🏢 会社・歴史について\n\n「純米吟醸について教えて」「初心者におすすめは？」「魚料理に合う日本酒は？」など、具体的にお聞かせください！`;
     }
 
     // チャットUI作成
