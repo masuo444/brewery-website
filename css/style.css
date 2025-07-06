@@ -5045,18 +5045,20 @@ body {
     border-left: 8px solid var(--color-accent);
 }
 
-/* AI Sakura Sticky Button Styles - v2.0 Force Update */
+/* AI Sakura Sticky Button Styles - v3.0 Elegant Sakura Design */
 .ai-sakura-sticky-btn {
     position: fixed !important;
     bottom: 0 !important;
     left: 0 !important;
     right: 0 !important;
-    background: linear-gradient(135deg, #FFE4E1 0%, #FFC0CB 30%, #FFB6C1 100%) !important;
-    padding: 16px 20px !important;
-    box-shadow: 0 -8px 32px rgba(255, 182, 193, 0.4), 0 -2px 16px rgba(255, 105, 180, 0.2) !important;
+    background: linear-gradient(135deg, #FADADD 0%, #F8BBD9 30%, #FFE4E1 100%) !important;
+    padding: 12px 20px !important;
+    box-shadow: 0 -6px 24px rgba(248, 187, 217, 0.3), 0 -2px 12px rgba(250, 218, 221, 0.2) !important;
     z-index: 1000 !important;
-    display: block !important;
-    border-top: 2px solid rgba(255, 255, 255, 0.8) !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    border-top: 2px solid rgba(255, 255, 255, 0.9) !important;
 }
 
 /* Force hide old mobile sticky CTA */
@@ -5066,59 +5068,64 @@ body {
 
 .sakura-sticky-btn {
     display: block;
-    width: 100%;
-    padding: 18px;
-    background: linear-gradient(135deg, #FF69B4 0%, #FF1493 50%, #FF69B4 100%);
-    color: white;
-    border: none;
+    width: 85%;
+    max-width: 380px;
+    padding: 14px 20px;
+    background: linear-gradient(135deg, #F8BBD9 0%, #FADADD 50%, #FFE4E1 100%);
+    color: #5D4E75;
+    border: 2px solid rgba(248, 187, 217, 0.6);
     text-align: center;
-    border-radius: 25px;
-    font-weight: 700;
-    font-size: 1.1rem;
-    transition: all 0.3s ease;
+    border-radius: 28px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     font-family: var(--font-japanese);
     cursor: pointer;
-    box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 16px rgba(248, 187, 217, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
     position: relative;
     overflow: hidden;
+    backdrop-filter: blur(8px);
 }
 
 .sakura-sticky-btn::before {
     content: '🌸';
     position: absolute;
-    left: -20px;
+    left: -18px;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 2rem;
-    opacity: 0.3;
-    animation: float 3s ease-in-out infinite;
+    font-size: 1.8rem;
+    opacity: 0.4;
+    animation: sakuraGentleFloat 4s ease-in-out infinite;
 }
 
 .sakura-sticky-btn::after {
     content: '🌸';
     position: absolute;
     right: -15px;
-    top: 20%;
-    font-size: 1.5rem;
-    opacity: 0.4;
-    animation: float 2.5s ease-in-out infinite reverse;
+    top: 25%;
+    font-size: 1.4rem;
+    opacity: 0.35;
+    animation: sakuraGentleFloat 3.5s ease-in-out infinite reverse;
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(-50%) translateX(0) rotate(0deg); }
-    50% { transform: translateY(-70%) translateX(5px) rotate(5deg); }
+@keyframes sakuraGentleFloat {
+    0%, 100% { transform: translateY(-50%) translateX(0) rotate(0deg); opacity: 0.3; }
+    33% { transform: translateY(-60%) translateX(3px) rotate(2deg); opacity: 0.5; }
+    66% { transform: translateY(-45%) translateX(-2px) rotate(-1deg); opacity: 0.4; }
 }
 
 .sakura-sticky-btn:hover {
-    background: linear-gradient(135deg, #FF1493 0%, #FF69B4 50%, #FF1493 100%);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(255, 105, 180, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    background: linear-gradient(135deg, #F0A6CA 0%, #F8BBD9 50%, #FADADD 100%);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 20px rgba(248, 187, 217, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border-color: rgba(240, 166, 202, 0.8);
+    color: #4A3A5A;
 }
 
 .sakura-sticky-btn:active {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.5);
+    transform: translateY(-1px) scale(1.01);
+    box-shadow: 0 3px 12px rgba(248, 187, 217, 0.4);
 }
 
 /* Floating Action Buttons */
