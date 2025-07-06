@@ -1,4 +1,4 @@
-// Simple AI Sakura Chat - 確実に動作するシンプル版
+// Simple AI Sakura Chat - エレガント桜風デザイン v3.1
 (function() {
     'use strict';
 
